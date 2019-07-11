@@ -291,6 +291,63 @@ public class SinglyLinkedList {
         }
     }
 
+    /**
+     * 链表中环的检测
+     * 空间复杂度O(1)
+     * 时间复杂度O(n)
+     */
+    public boolean hadCycle (Node head) {
+        if (head == null) return false;
+
+        Node fast = head.getNext();
+        Node slow = head;
+
+        /**
+         * 思路很厉害，从数学上讲：
+         * 有环的链表，快指针一定会绕回来追赶慢指针，
+         * 相对速度快1，所以一定可以重合
+         */
+        while (fast != null && fast.getNext() != null) {
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+
+            if (slow == fast) return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 链表中环的检测
+     * 返回第一个成环点
+     * @param head
+     * @return
+     */
+    public Node detectCycle (Node head) {
+        if (head == null || head.getNext() == null || head.getNext().getNext() == null) return null;
+
+        Node fast = head.getNext().getNext();
+        Node slow = head.getNext();
+
+        //找到相遇点
+        while (fast != slow) {
+            if (fast.getNext() != null && fast.getNext().getNext() != null) {
+                fast = fast.getNext().getNext();
+                        slow = slow.getNext();
+            } else {
+                return null;
+            }
+        }
+        //找到入口
+        fast = head;
+        while (fast != slow) {
+            fast = fast.getNext();
+            slow = slow.getNext();
+        }
+
+        return slow;
+    }
+
 
     /**
      * 判断回文数
