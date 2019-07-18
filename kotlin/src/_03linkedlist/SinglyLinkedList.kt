@@ -1,5 +1,7 @@
 package _03linkedlist
 
+import utils.Node
+
 class SinglyLinkedList {
 
     var head: Node? = null
@@ -8,6 +10,12 @@ class SinglyLinkedList {
 
         for (v in array) {
             insertToTail(v)
+        }
+    }
+
+    constructor(array: Array<Int?>) {
+        for (v in array) {
+            insertToTail(v!!)
         }
     }
 
