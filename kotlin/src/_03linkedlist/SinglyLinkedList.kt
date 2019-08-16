@@ -130,7 +130,7 @@ class SinglyLinkedList {
         /**
          * 思路很厉害，从数学上讲：
          * 有环的链表，快指针一定会绕回来追赶慢指针，
-         * 相对速度快1，所以一定可以重合
+         * 相对速度快1，所以一定可以重合相对速度快1，所以一定可以重合
          */
         while (fast != null && fast.next != null) {
             fast = fast?.next?.next
