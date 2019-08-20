@@ -114,7 +114,7 @@ class SinglyLinkedList {
             q = qNext
         }
 
-        return head
+        return head.next
 
     }
 
@@ -319,6 +319,45 @@ class SinglyLinkedList {
         }
 
         return slow
+    }
+
+    /**
+     * 链表
+     * 每k位逆序
+     */
+    fun reverseEachKLength(head: Node?, k: Int) {
+        if (head == null) return
+        //哨兵节点
+        var soldier = Node(8080)
+
+        var pSlow = head
+        var pFast = head
+        while (pSlow != null) {
+            var i = 0
+            while (pFast != null && i < k ) {
+                pFast = pFast?.next
+                i++
+            }
+
+            if (i == k) {
+                //reverse
+                for (j in 0 until k) {
+                    var temp = pSlow?.next
+                    pSlow?.next = soldier.next
+                    soldier.next = pSlow
+                    pSlow = temp
+                }
+                for (l in 0 until k) {
+                    soldier = soldier.next!!
+                }
+                continue
+            } else {
+                //add
+                soldier.next = pSlow
+                pSlow = null
+                break
+            }
+        }
     }
 
     companion object {
