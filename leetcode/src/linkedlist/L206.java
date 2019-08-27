@@ -1,3 +1,5 @@
+package linkedlist;
+
 public class L206 {
 
     public ListNode reverseList (ListNode head) {
@@ -15,12 +17,5 @@ public class L206 {
         }
 
         return soldier.next;
-    }
-
-    static public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode (int x) { val = x; }
     }
 }
