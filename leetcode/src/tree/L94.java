@@ -20,15 +20,21 @@ import java.util.Stack;
  */
 public class L94 {
     public List<Integer> inorderTraversal (TreeNode root) {
-        if (null == root) return null;
-
         List<Integer> list = new ArrayList<Integer>();
-        TreeNode node = root;
+        TreeNode p = root;
         Stack<TreeNode> stack = new Stack<TreeNode>();
 
-        while (node != null) {
-            if (node.left != null) {
-                stack.push(node);
+        while (p != null || !stack.isEmpty()) {
+
+            while (p != null) {
+                stack.push(p);
+                p = p.left;
+            }
+
+            if (!stack.isEmpty()) {
+                p = stack.pop();
+                list.add(p.val);
+                p = p.right;
             }
         }
 
