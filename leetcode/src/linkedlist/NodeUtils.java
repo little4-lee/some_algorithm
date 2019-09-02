@@ -35,4 +35,14 @@ public class NodeUtils {
         p.next = cycleStart;
         return head;
     }
+
+    public static void addTail(ListNode original, ListNode tail) {
+        if (original == null || tail == null) return;
+
+        ListNode p = original;
+        while (p.next != null) {
+            p = p.next;
+        }
+        p.next = tail;
+    }
 }
