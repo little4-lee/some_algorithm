@@ -45,4 +45,14 @@ public class NodeUtils {
         }
         p.next = tail;
     }
+
+    public static void printList(ListNode head) {
+        if (head == null) System.out.println("empty list");
+
+        ListNode p = head;
+        while (p != null) {
+            System.out.println(p.val);
+            p = p.next;
+        }
+    }
 }
