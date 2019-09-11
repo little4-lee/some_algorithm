@@ -19,32 +19,56 @@ package dynamic_programming;
  * 2. 2 steps
  */
 public class L70 {
-    public int climbStairs (int n) {
-        if (n < 3) return n;
+public int climbStairs (int n) {
+    if (n == 1) return 1;
+    if (n == 2) return 2;
 
-        int res = 0;
-        return climbStairs(n - 1) + climbStairs(n - 2);
+    int count = 0;
+    int minStep = 1;
+    int maxStep = 2;
+    int rows = n / minStep;
+
+    int[][] array = new int[rows][n + 1];
+
+    for (int i = minStep; i <= maxStep; i++) {
+        array[0][i] = 1;
+    }
+
+    for (int i = 1; i < rows; i++) {
+        //stepScope: min~max 1~2here
+        for (int j = minStep; j <= maxStep; j++) {
+            for (int k = 0; k <= n - j; k++) {
+                if (array[i-1][k] > 0) {
+                    //到达k有几种策略，到达k+j就要加上这么多的策略数
+                    array[i][k+j] += array[i-1][k];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < rows; i++) {//计算所有总数为n的策略数
+        count += array[i][n];
+    }
+
+    return count;
+}
+
+    public static int climbStairs2(int n) {
+        int[] climbMap = new int[n + 1];
+        climbMap[0] = 1;
+        climbMap[1] = 1;
+
+        for (int i = 2; i < climbMap.length; i++) {
+            climbMap[i] = climbMap[i - 1] + climbMap[i - 2];
+        }
+        return climbMap[n];
     }
 
     public static void main (String[] args) {
-        //        System.out.println(new L70().climbStairs(1));
-        //        System.out.println(new L70().climbStairs(2));
-        //        System.out.println(new L70().climbStairs(3));
-        //        System.out.println(new L70().climbStairs(4));
-        //        System.out.println(new L70().climbStairs(5));
-        //        System.out.println(new L70().climbStairs(6));
-        //        System.out.println(new L70().climbStairs(7));
-        //        System.out.println(new L70().climbStairs(8));
-        //        System.out.println(new L70().climbStairs(9));
-        System.out.println(new L70().climbStairs(44));
-
-        //        L70 l70 = new L70();
-        //        for (int i = 1; i <= 20; i++) {
-        //            l70.count = 0;
-        //            System.out.print("n: " + i);
-        //            System.out.print("; result: " + l70.climbStairs(i));
-        //            System.out.print("; count: " + l70.count);
-        //            System.out.println();
-        //        }
+        for (int i = 4; i < 20; i++) {
+            System.out.println(new L70().climbStairs(i));
+            System.out.println(new L70().climbStairs2(i));
+            System.out.println();
+        }
     }
 }
