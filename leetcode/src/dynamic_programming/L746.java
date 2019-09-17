@@ -63,7 +63,6 @@ public class L746 {
                     }
                 }
             }
-
         }
         return minStep;
     }
