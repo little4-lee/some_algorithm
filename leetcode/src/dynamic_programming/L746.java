@@ -23,7 +23,7 @@ package dynamic_programming;
  * Every cost[i] will be an integer in the range [0, 999].
  */
 public class L746 {
-    public int minCostClimbingStairs (int[] cost) {
+    public int minCostClimbingStairsIn2dArray (int[] cost) {
         if (cost == null || cost.length <= 1) return 0;
         int[][] array = new int[cost.length][cost.length];
 
@@ -68,10 +68,20 @@ public class L746 {
         return minStep;
     }
 
+    public int minCostClimbingStairs (int[] cost) {
+        if (cost == null || cost.length < 2) return 0;
+
+        for (int i = 2; i < cost.length; i++) {
+            cost[i] += Math.min(cost[i - 1], cost[i - 2]);
+        }
+
+        return Math.min(cost[cost.length - 1], cost[cost.length - 2]);
+    }
+
     public static void main (String[] args) {
         //        int[] array = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
-        int[] array = {10, 15, 20};
-        //        int[] array = {10, 15, 1, 100};
+        //        int[] array = {10, 15, 20};
+        int[] array = {10, 15, 1, 100};
         System.out.println(new L746().minCostClimbingStairs(array));
     }
 }
