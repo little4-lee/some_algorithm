@@ -50,7 +50,7 @@ public class L122 {
                     }
                 }
             } else {
-                //寻找卖出金额
+                //look for sell price
                 if (prices[i] < readyToSellPrice) {
                     //sell at this price
                     profit += readyToSellPrice - buyPrice;
