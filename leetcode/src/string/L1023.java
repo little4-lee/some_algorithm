@@ -1,5 +1,7 @@
 package string;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,92 +43,151 @@ import java.util.List;
  * All strings consists only of lower and upper case English letters.
  */
 public class L1023 {
+
+    /**
+     * bad implement
+     */
+//    public List<Boolean> camelMatch(String[] queries, String pattern) {
+//        if (queries == null || pattern == null) return null;
+//        List<Boolean> results = new ArrayList<>();
+//
+//        //split pattern
+//        List<String> patternArr = new ArrayList<>();
+//        char temp;
+//        int lastStartIndex = 0;
+//        int length = pattern.length();
+//        for (int i = 0; i < length; i++) {
+//            temp = pattern.charAt(i);
+//            if (temp <= 'Z') {
+//                String str = pattern.substring(lastStartIndex, i);
+//                if (str != null && str.length() > 0) {
+//                    patternArr.add(str);
+//                    lastStartIndex = i;
+//                }
+//            }
+//            if (i == length - 1) {
+//                patternArr.add(pattern.substring(lastStartIndex, length));
+//            }
+//        }
+//
+//        String query;
+//        boolean flag;
+//        int patternLength = pattern.length();
+//
+//        for (int i = 0; i< queries.length; i++) {
+//            query = queries[i];
+//            flag = true;
+//
+//            //query长度小于pattern，一定不匹配
+//            if (query.length() < patternLength) {
+//                results.add(i, false);
+//                continue;
+//            }
+//
+//            int queryIndex = 0;
+//            for (int j = 0; j < patternArr.size(); j++) {
+//                if (queryIndex >= query.length()) {
+//                    flag = false;
+//                    break;
+//                }
+//                if (!flag) break;
+//                for (int k = 0; k < patternArr.get(j).length(); k++) {
+//                    if (patternArr.get(j).charAt(k) == query.charAt(queryIndex)) {
+//                        queryIndex++;
+//                    } else {
+//                        if (query.charAt(queryIndex) > 'Z') {
+//                            k--;
+//                            queryIndex++;
+//                            if (queryIndex >= query.length()) {
+//                                flag = false;
+//                                break;
+//                            }
+//                        } else {
+//                            if (k <= patternArr.get(j).length() - 1) {
+//                                flag = false;
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                while (queryIndex < query.length()) {
+//                    if (query.charAt(queryIndex) > 'Z') queryIndex++;
+//                    else break;
+//                }
+//
+//                if (j == patternArr.size() - 1 && queryIndex <= query.length() - 1) flag = false;
+//            }
+//
+//            results.add(i, flag);
+//        }
+//        return results;
+//    }
+
     public List<Boolean> camelMatch(String[] queries, String pattern) {
         if (queries == null || pattern == null) return null;
         List<Boolean> results = new ArrayList<>();
 
-        //split pattern
-        List<String> patternArr = new ArrayList<>();
-        char temp;
-        int lastStartIndex = 0;
-        int length = pattern.length();
-        for (int i = 0; i < length; i++) {
-            temp = pattern.charAt(i);
-            if (temp <= 'Z') {
-                String str = pattern.substring(lastStartIndex, i);
-                if (str != null && str.length() > 0) {
-                    patternArr.add(str);
-                    lastStartIndex = i;
-                }
-            }
-            if (i == length - 1) {
-                patternArr.add(pattern.substring(lastStartIndex, length));
-            }
-        }
-
-        String query;
         boolean flag;
-        int patternLength = pattern.length();
-
-        for (int i = 0; i< queries.length; i++) {
+        String query;
+        //主要逻辑是操作两个下标
+        int queryIndex;
+        int patternIndex;
+        for (int i = 0; i < queries.length; i++) {
             query = queries[i];
-            flag = true;
 
-            //query长度小于pattern，一定不匹配
-            if (query.length() < patternLength) {
+            if (query.length() < pattern.length()) {
                 results.add(i, false);
                 continue;
             }
 
-            int queryIndex = 0;
-            for (int j = 0; j < patternArr.size(); j++) {
-                if (queryIndex >= query.length()) {
-                    flag = false;
-                    break;
-                }
-                if (!flag) break;
-                for (int k = 0; k < patternArr.get(j).length(); k++) {
-                    if (patternArr.get(j).charAt(k) == query.charAt(queryIndex)) {
-                        queryIndex++;
-                    } else {
-                        if (query.charAt(queryIndex) > 'Z') {
-                            k--;
-                            queryIndex++;
-                            if (queryIndex >= query.length()) {
-                                flag = false;
-                                break;
-                            }
-                        } else {
-                            if (k <= patternArr.get(j).length() - 1) {
-                                flag = false;
-                                break;
-                            }
-                        }
+            flag = true;
+            queryIndex = 0;
+            patternIndex = 0;
+
+            while (queryIndex < query.length() && patternIndex < pattern.length()) {
+                if (query.charAt(queryIndex) == pattern.charAt(patternIndex)) {
+                    queryIndex++;
+                    patternIndex++;
+                } else {
+                    if (query.charAt(queryIndex) <= 'Z') {
+                        flag = false;
+                        break;
                     }
+                    queryIndex++;
                 }
+            }
 
+
+            if (patternIndex < pattern.length()) {
+                flag = false;
+            }
+
+            if (queryIndex < query.length()) {
                 while (queryIndex < query.length()) {
-                    if (query.charAt(queryIndex) > 'Z') queryIndex++;
-                    else break;
+                    if (query.charAt(queryIndex) <= 'Z') {
+                        flag = false;
+                        break;
+                    }
+                    else queryIndex++;
                 }
-
-                if (j == patternArr.size() - 1 && queryIndex <= query.length() - 1) flag = false;
             }
 
             results.add(i, flag);
         }
+
         return results;
     }
 
     public static void main (String[] args) {
-//        String[] queries = {"BoBa", "BosBacod", "BobbbCaBa", "BoooBaaaaa", "BoooBaaaaaB", "BoBb", "BoBaaaaA"};
-//        String pattern = "BoBa";
+        String[] queries = {"BoBa", "BosBacod", "BobbbCaBa", "BoooBaaaaa", "BoooBaaaaaB", "BoBb", "BoBaaaaA"};
+        String pattern = "BoBa";
 
 //        String[] queries = {"FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"};
 //        String pattern = "FoBaT";
 
-        String[] queries = {"CompetitiveProgramming","CounterPick","ControlPanel"};
-        String pattern = "CooP";
+//        String[] queries = {"CompetitiveProgramming","CounterPick","ControlPanel"};
+//        String pattern = "CooP";
         System.out.println(new L1023().camelMatch(queries, pattern));
     }
 }
