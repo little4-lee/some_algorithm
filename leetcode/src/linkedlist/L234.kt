@@ -1,37 +1,41 @@
 package linkedlist
 
 fun isPalindrome(head: ListNode?): Boolean {
+    if (head == null) return true
+    if (head.next == null) return true
+
+    val flag = ListNode(-1000)
+
     var fast = head
     var slow = head
-    var so:ListNode? = null
-    var preSo:ListNode? = null
+    var slowNext: ListNode?
 
     while (fast?.next?.next != null) {
         fast = fast.next.next
-        preSo = so
-        so = slow
-        slow = slow!!.next
-        so!!.next = preSo
+        slowNext = slow!!.next
+
+        slow.next = flag.next
+        flag.next = slow
+        slow = slowNext
     }
 
     return if (fast!!.next == null) {
-        //奇数
-        slow = slow!!.next
-        theSameLinkedList(slow, so!!)
+        //odd len
+        theSameLinkedList(slow!!.next, flag.next)
     } else {
-        //偶数
-        preSo = so
-        so = slow
-        slow = slow!!.next
-        so!!.next = preSo
-        theSameLinkedList(slow, so)
+        //even len
+        slowNext = slow!!.next
+        slow.next = flag.next
+        flag.next = slow
+
+        theSameLinkedList(slowNext, flag.next)
     }
 }
 
 fun theSameLinkedList(first: ListNode, second: ListNode): Boolean {
-    var f = first
-    var s = second
-    while (f.next != null && s.next != null) {
+    var f: ListNode? = first
+    var s: ListNode? = second
+    while (f != null && s != null) {
         if (f.`val` == s.`val`) {
             f = f.next
             s = s.next
@@ -43,6 +47,10 @@ fun theSameLinkedList(first: ListNode, second: ListNode): Boolean {
 }
 
 fun main() {
-    val node = NodeUtils.arrayToList(1,2)
-    println(isPalindrome(node))
+    println(isPalindrome(NodeUtils.arrayToList(1, 2)))
+    println(isPalindrome(NodeUtils.arrayToList(1, 2, 1)))
+    println(isPalindrome(NodeUtils.arrayToList(1, 2, 2, 1)))
+    println(isPalindrome(NodeUtils.arrayToList(1, 2, 3, 3, 2, 1)))
+    println(isPalindrome(NodeUtils.arrayToList(1)))
+    println(isPalindrome(NodeUtils.arrayToList()))
 }
