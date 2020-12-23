@@ -8,7 +8,8 @@ val arr4 = arrayOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 
 fun main() {
 //    exeSort(::bubbleSort)
-    exeSort(::insertionSort)
+//    exeSort(::insertionSort)
+    exeSort(::selectionSort)
 }
 
 fun exeSort(sort: (Array<Int>) -> Array<Int>) {
@@ -18,7 +19,7 @@ fun exeSort(sort: (Array<Int>) -> Array<Int>) {
     printArr(sort.invoke(arr2))
     printArr(sort.invoke(arr3))
     printArr(sort.invoke(arr4))
-//    sort.invoke(arr0)
+//   JK sort.invoke(arr0)
 //    sort.invoke(arr1)
 //    sort.invoke(arr2)
 //    sort.invoke(arr3)
@@ -59,7 +60,6 @@ private fun bubbleSort(arr: Array<Int>): Array<Int> {
  * - stable: true
  */
 private fun insertionSort(arr: Array<Int>): Array<Int> {
-
     for (i in 1 until arr.size) {
         val value = arr[i]
         var index = i
@@ -74,12 +74,33 @@ private fun insertionSort(arr: Array<Int>): Array<Int> {
         }
         if (index != i) arr[index] = value
     }
-
     return arr
 }
 
-private fun selectSort(arr: IntArray) {
-    // TODO: 2020/12/21
+/**
+ * 3. selection sort
+ * - time: O(n^2)
+ * - space: O(1)
+ * - in place: true
+ * - stable: true
+ */
+private fun selectionSort(arr: Array<Int>) : Array<Int>{
+    for (i in 0 until arr.size - 1) {
+        var index = i
+
+        for (j in i + 1 until arr.size) {
+            if (arr[j] < arr[index]) {
+                index = j
+            }
+        }
+
+        if (index != i) {
+            val value = arr[i]
+            arr[i] = arr[index]
+            arr[index] = value
+        }
+    }
+    return arr
 }
 
 private fun mergeSort(arr: IntArray) {
