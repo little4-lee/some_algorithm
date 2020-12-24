@@ -9,7 +9,8 @@ val arr4 = arrayOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 fun main() {
 //    exeSort(::bubbleSort)
 //    exeSort(::insertionSort)
-    exeSort(::selectionSort)
+//    exeSort(::selectionSort)
+    exeSort(::mergeSort)
 }
 
 fun exeSort(sort: (Array<Int>) -> Array<Int>) {
@@ -19,11 +20,6 @@ fun exeSort(sort: (Array<Int>) -> Array<Int>) {
     printArr(sort.invoke(arr2))
     printArr(sort.invoke(arr3))
     printArr(sort.invoke(arr4))
-//   JK sort.invoke(arr0)
-//    sort.invoke(arr1)
-//    sort.invoke(arr2)
-//    sort.invoke(arr3)
-//    sort.invoke(arr4)
 
     val endTime = System.currentTimeMillis()
     println("time cost: ${endTime - startTime} ms")
@@ -84,7 +80,7 @@ private fun insertionSort(arr: Array<Int>): Array<Int> {
  * - in place: true
  * - stable: true
  */
-private fun selectionSort(arr: Array<Int>) : Array<Int>{
+private fun selectionSort(arr: Array<Int>): Array<Int> {
     for (i in 0 until arr.size - 1) {
         var index = i
 
@@ -103,8 +99,58 @@ private fun selectionSort(arr: Array<Int>) : Array<Int>{
     return arr
 }
 
-private fun mergeSort(arr: IntArray) {
-    // TODO: 2020/12/21
+/**
+ * 4. merge sort
+ * - time: O(n*log n)
+ * - space: O(n)
+ * - in place: false
+ * - stable: true
+ */
+private fun mergeSort(arr: Array<Int>): Array<Int> {
+    mergeSortInternal(arr, 0, arr.size - 1)
+    return arr
+}
+
+private fun mergeSortInternal(arr: Array<Int>, start: Int, end: Int) {
+    if (start == end) {
+        return
+    }
+
+    val partition = start + (end - start) / 2
+    mergeSortInternal(arr, start, partition)
+    mergeSortInternal(arr, partition + 1, end)
+
+    merge(arr, start, partition, partition + 1, end, start, end)
+}
+
+private fun merge(arr: Array<Int>, start1: Int, end1: Int, start2: Int, end2: Int, start: Int, end: Int) {
+    var i1 = start1
+    var i2 = start2
+
+    val tmp = Array(end + 1 - start) {it}
+    var i = 0
+
+    while (i1 <= end1 && i2 <= end2) {
+        if (arr[i1] <= arr[i2]) {
+            tmp[i++] = arr[i1++]
+        } else {
+            tmp[i++] = arr[i2++]
+        }
+    }
+
+    if (i1 <= end1) {
+        while (i1 <= end1) {
+            tmp[i++] = arr[i1++]
+        }
+    } else if (i2 <= end2) {
+        while (i2 <= end2) {
+            tmp[i++] = arr[i2++]
+        }
+    }
+
+    for (item in 0 until tmp.size) {
+        arr[start + item] = tmp[item]
+    }
 }
 
 private fun quickSort(arr: IntArray) {
