@@ -7,7 +7,8 @@ fun main() {
 //    val search = ::search0
 //    val search = ::bSearchExt01
 //    val search = ::bSearchExt02
-    val search = ::bSearchExt03
+//    val search = ::bSearchExt03
+    val search = ::bSearchExt04
 
     val value0 = -100
     val value1 = 1001
@@ -121,6 +122,28 @@ fun bSearchExt03(target: Int, arr: Array<Int>): Int {
             else hi = mid - 1
         } else {
             lo = mid + 1
+        }
+    }
+
+    return -1
+}
+
+/**
+ * binary search ext04
+ * return last element that not more than target
+ * if null return -1
+ */
+fun bSearchExt04(target: Int, arr: Array<Int>): Int {
+    var lo = 0
+    var hi = arr.size - 1
+
+    while (lo <= hi) {
+        val mid = lo + ((hi - lo) shr 1)
+        if (arr[mid] <= target) {
+            if (mid == arr.size - 1 || arr[mid + 1] > target) return mid
+            else lo = mid + 1
+        } else {
+            hi = mid - 1
         }
     }
 
