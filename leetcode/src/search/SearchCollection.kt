@@ -6,7 +6,8 @@ fun main() {
     val arrDuplicate = Array(count) { 1 }
 //    val search = ::search0
 //    val search = ::bSearchExt01
-    val search = ::bSearchExt02
+//    val search = ::bSearchExt02
+    val search = ::bSearchExt03
 
     val value0 = -100
     val value1 = 1001
@@ -84,7 +85,6 @@ fun bSearchExt01(target: Int, arr: Array<Int>): Int {
  * return last index when the value equals target
  * if null return -1
  */
-// TODO boundary
 fun bSearchExt02(target: Int, arr: Array<Int>): Int {
     var lo = 0
     var hi = arr.size - 1
@@ -99,6 +99,28 @@ fun bSearchExt02(target: Int, arr: Array<Int>): Int {
                 if (mid == arr.size - 1 || arr[mid + 1] != target) return mid
                 else lo = mid + 1
             }
+        }
+    }
+
+    return -1
+}
+
+/**
+ * binary search ext03
+ * return first element that not less than target
+ * if null return -1
+ */
+fun bSearchExt03(target: Int, arr: Array<Int>): Int {
+    var lo = 0
+    var hi = arr.size - 1
+
+    while (lo <= hi) {
+        val mid = lo + ((hi - lo) shr 1)
+        if (arr[mid] >= target) {
+            if (mid == 0 || arr[mid - 1] < target) return mid
+            else hi = mid - 1
+        } else {
+            lo = mid + 1
         }
     }
 
