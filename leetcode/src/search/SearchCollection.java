@@ -37,11 +37,17 @@ public class SearchCollection {
 //        System.out.println(collection.bSearchExt2(arr4, target));
 //        System.out.println(collection.bSearchExt2(arr5, target));
 
-        System.out.println(collection.bSearchExt3(arr1, target));
-        System.out.println(collection.bSearchExt3(arr2, target));
-        System.out.println(collection.bSearchExt3(arr3, target));
-        System.out.println(collection.bSearchExt3(arr4, target));
-        System.out.println(collection.bSearchExt3(arr5, target));
+//        System.out.println(collection.bSearchExt3(arr1, target));
+//        System.out.println(collection.bSearchExt3(arr2, target));
+//        System.out.println(collection.bSearchExt3(arr3, target));
+//        System.out.println(collection.bSearchExt3(arr4, target));
+//        System.out.println(collection.bSearchExt3(arr5, target));
+
+        System.out.println(collection.bSearchExt4(arr1, target));
+        System.out.println(collection.bSearchExt4(arr2, target));
+        System.out.println(collection.bSearchExt4(arr3, target));
+        System.out.println(collection.bSearchExt4(arr4, target));
+        System.out.println(collection.bSearchExt4(arr5, target));
 
     }
 
@@ -136,6 +142,28 @@ public class SearchCollection {
             }
         }
 
+        return -1;
+    }
+
+    /**
+     * find last not more than target
+     * @param arr
+     * @param target
+     * @return
+     */
+    public int bSearchExt4(int [] arr, int target) {
+        int lo = 0;
+        int hi = arr.length - 1;
+
+        while (lo <= hi) {
+            int mid = lo + ((hi - lo)>>1);
+            if (arr[mid] <= target) {
+                if (mid == arr.length - 1 || arr[mid + 1] > target) return mid;
+                else lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
         return -1;
     }
 }
