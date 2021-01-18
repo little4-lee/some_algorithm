@@ -1,8 +1,8 @@
 package linkedlist
 
 fun isPalindrome(head: ListNode?): Boolean {
-    if (head == null) return true
-    if (head.next == null) return true
+    head ?: return true
+    head.next ?: return true
 
     val flag = ListNode(-1000)
 
