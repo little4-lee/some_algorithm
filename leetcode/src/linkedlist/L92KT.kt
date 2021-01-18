@@ -1,29 +1,36 @@
 package linkedlist
 
-fun reverseBetween(head: ListNode?, start: Int, end: Int) : ListNode?{
-    if (head == null) return null
-    if (start == end) return head
+class L92KT {
+    fun reverseBetween(head: ListNode?, m: Int, n: Int): ListNode? {
+        val soldier = ListNode(0)
+        soldier.next = head
+        var p = head
+        var start: ListNode? = null
+        var preStart: ListNode? = soldier
+        var index = 1
 
-    val soldier = ListNode(-1000)
-    var preStart = head
-    var p = head
-    var index = 1
+        while (p != null && index <= n) {
+            val pNext = p.next
 
-    var pNext: ListNode?
-    while (p != null && index <= end) {
-        pNext = p.next
-
-        if (index == start - 1) {
-            preStart = p
+            if (index == m - 1) {
+                preStart = p
+            } else if (index >= m) {
+                if (index == m) start = p
+                p.next = preStart?.next
+                preStart?.next = p
+            }
+            p = pNext
+            index++
         }
-
-        if (index >= start) {
-
-        }
-
-        index++
-        p = pNext
+        start?.next = p
+        return soldier.next
     }
+}
 
-    return soldier.next
+fun main() {
+    val list = arrayToList(1, 2, 3, 4, 5, 6, 7)
+//    printList(L92KT().reverseBetween(list, 1, 7))
+    printList(L92KT().reverseBetween(list, 5, 7))
+//    printList(L92KT().reverseBetween(list, 1, 5))
+//    printList(L92KT().reverseBetween(list, 2, 5))
 }
