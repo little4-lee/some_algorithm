@@ -1,10 +1,9 @@
 package tree
 
 import java.util.*
-import kotlin.test.todo
 
 class L145KTCopy {
-    fun postorderTraversal(root: TreeNode?): List<Int> {
+    fun postOrderTraversal(root: TreeNode?): List<Int> {
         var p = root
         val list = mutableListOf<Int>()
         val s = Stack<TreeNode>()
@@ -45,6 +44,6 @@ fun main() {
 
 
     //        TreeUtils.printTree(node);
-    val list = L145KTCopy().postorderTraversal(node)
+    val list = L145KTCopy().postOrderTraversal(node)
     for (i in list) print("$i ")
 }

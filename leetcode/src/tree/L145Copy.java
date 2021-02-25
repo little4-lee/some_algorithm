@@ -20,7 +20,7 @@ import java.util.Stack;
  * Output: [3,2,1]
  */
 public class L145Copy {
-    public List<Integer> postorderTraversal (TreeNode root) {
+    public List<Integer> postOrderTraversal (TreeNode root) {
         List<Integer> list = new LinkedList<>();
         TreeNode p = root;
         TreeNode lastVisit = null;
@@ -53,7 +53,7 @@ public class L145Copy {
 
 
         //        TreeUtils.printTree(node);
-        List<Integer> list = new L145Copy().postorderTraversal(node);
+        List<Integer> list = new L145Copy().postOrderTraversal(node);
         for (int i : list) System.out.print(i + " ");
 
     }

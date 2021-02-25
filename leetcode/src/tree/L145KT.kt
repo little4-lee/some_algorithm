@@ -3,7 +3,7 @@ package tree
 import java.util.*
 
 class L145KT {
-    fun postorderTraversal(root: TreeNode?): List<Int> {
+    fun postOrderTraversal(root: TreeNode?): List<Int> {
         val list = mutableListOf<Int>()
         val stack = Stack<TreeNode>()
         var p = root
@@ -42,6 +42,6 @@ fun main() {
 
 
     //        TreeUtils.printTree(node);
-    val list = L145KT().postorderTraversal(node)
+    val list = L145KT().postOrderTraversal(node)
     for (i in list) print("$i ")
 }
