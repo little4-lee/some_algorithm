@@ -20,7 +20,6 @@ import java.util.Stack;
  */
 public class L94TraversalInOrder {
     public List<Integer> inorderTraversal (TreeNode root) {
-        // TODO: 2021/2/25 check null
         List<Integer> list = new LinkedList<>();
         TreeNode p = root;
         Stack<TreeNode> stack = new Stack<>();
