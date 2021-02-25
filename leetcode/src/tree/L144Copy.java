@@ -22,7 +22,7 @@ import java.util.Stack;
  */
 public class L144Copy {
 
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preOrderTraversal (TreeNode root) {
         List<Integer> list = new LinkedList<>();
         TreeNode p = root;
         Stack<TreeNode> s = new Stack<>();
@@ -46,7 +46,7 @@ public class L144Copy {
 
 
         //        TreeUtils.printTree(node);
-        List<Integer> list = new L144Copy().preorderTraversal(node);
+        List<Integer> list = new L144Copy().preOrderTraversal(node);
         for (int i : list) System.out.print(i + " ");
     }
 }

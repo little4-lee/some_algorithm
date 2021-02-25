@@ -20,13 +20,12 @@ import java.util.Stack;
  *
  * Output: [1,2,3]
  */
-public class L144 {
+public class L144TraversalPreOrder {
 
-    public List<Integer> preOrderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-
+    public List<Integer> preOrderTraversal (TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
-        Stack<TreeNode> stack = new Stack<TreeNode>();
 
         while (p != null || !stack.isEmpty()) {
             while (p != null) {
@@ -34,9 +33,22 @@ public class L144 {
                 if (p.right != null) stack.push(p.right);
                 p = p.left;
             }
-            if (!stack.isEmpty()) p = stack.pop();
+
+            if (!stack.isEmpty()) {
+                p = stack.pop();
+            }
         }
 
         return list;
     }
+
+    public static void main (String[] args) {
+        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);
+
+
+        //        TreeUtils.printTree(node);
+        List<Integer> list = new L144TraversalPreOrder().preOrderTraversal(node);
+        for (int i : list) System.out.print(i + " ");
+    }
+
 }

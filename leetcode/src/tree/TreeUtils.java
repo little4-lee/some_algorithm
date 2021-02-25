@@ -30,6 +30,6 @@ public class TreeUtils {
     }
 
     public static void printTree(TreeNode node) {
-        System.out.println(new L144().preorderTraversal(node));
+        System.out.println(new L144().preOrderTraversal(node));
     }
 }
