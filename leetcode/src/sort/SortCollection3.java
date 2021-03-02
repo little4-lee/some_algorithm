@@ -1,10 +1,10 @@
 package sort;
 
-public class SortCollectionCopyCopy {
+public class SortCollection3 {
 
     public static void main (String[] args) {
         int [] arr = {2, 4, 5, 3, 7};
-        SortCollectionCopyCopy collection = new SortCollectionCopyCopy();
+        SortCollection3 collection = new SortCollection3();
         collection.sort(arr);
         printArr(arr);
     }
