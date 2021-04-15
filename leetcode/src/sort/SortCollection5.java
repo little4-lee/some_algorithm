@@ -92,7 +92,7 @@ public class SortCollection5 {
         //TODO check recursive depth
 
         int p = partition(nums, start, end);
-        quickSort(nums, 0, p - 1);
+        quickSort(nums, start, p - 1);
         quickSort(nums, p + 1, end);
     }
 
@@ -118,5 +118,8 @@ public class SortCollection5 {
         for (int i : arr) System.out.print(i + " ");
     }
 
+    private void heapSort(int nums, int start, int end) {
+        // TODO: 2021/4/15
+    }
 
 }
