@@ -1,5 +1,14 @@
-package linkedlist
+package linkedlist.l206_reverse_linked_list
 
+import linkedlist.ListNode
+import linkedlist.NodeUtils.arrayToList
+import linkedlist.NodeUtils.printList
+
+/**
+ * 哨兵节点
+ * 新建哨兵节点
+ * 遍历原链表，每一个节点都插在哨兵的后面
+ */
 class L206KT {
     fun reverseList(head: ListNode?): ListNode? {
         head ?: return null
