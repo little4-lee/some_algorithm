@@ -1,4 +1,7 @@
-package linkedlist;
+package linkedlist.l234_is_palindrome;
+
+import linkedlist.ListNode;
+import linkedlist.NodesKt;
 
 public class L234 {
     public boolean isPalindrome (ListNode head) {
@@ -51,7 +54,7 @@ public class L234 {
     }
 
     public static void main (String[] args) {
-        ListNode head1 = NodesKt.arrayToList(1,2,3,4,5);
+        ListNode head1 = NodesKt.arrayToList(1, 2, 3, 4, 5);
         ListNode head2 = NodesKt.arrayToList(1,2,3,4,5,4,3,2,1);
         ListNode head3 = NodesKt.arrayToList(1,2,3,4,5,4,3,2,1);
         ListNode head4 = NodesKt.arrayToList(1,2,1);
