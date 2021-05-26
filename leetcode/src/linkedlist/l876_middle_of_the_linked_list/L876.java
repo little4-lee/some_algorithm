@@ -1,7 +1,10 @@
-package linkedlist;
+package linkedlist.l876_middle_of_the_linked_list;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import linkedlist.ListNode;
+import linkedlist.NodeUtils;
 
 /**
  * 876. Middle of the Linked List
