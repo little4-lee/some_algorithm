@@ -1,4 +1,6 @@
-package linkedlist;
+package linkedlist.l141_linked_list_cycle;
+
+import linkedlist.ListNode;
 
 /**
  * https://leetcode.com/problems/linked-list-cycle/
@@ -9,6 +11,11 @@ package linkedlist;
  * <p>
  * To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed)
  * in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+ *
+ * 思路:
+ *
+ * 快慢指针
+ * 快指针比慢指针相对速度快1，所以如果有环，肯定重合
  */
 public class L141 {
     public boolean hasCycle (ListNode head) {

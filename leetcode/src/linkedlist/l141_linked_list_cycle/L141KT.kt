@@ -1,4 +1,7 @@
-package linkedlist
+package linkedlist.l141_linked_list_cycle
+
+import linkedlist.ListNode
+import linkedlist.NodeUtils.arrayToList
 
 class L141KT {
     fun hasCycle(head: ListNode?): Boolean {

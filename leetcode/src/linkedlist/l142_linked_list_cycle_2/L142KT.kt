@@ -1,4 +1,8 @@
-package linkedlist
+package linkedlist.l142_linked_list_cycle_2
+
+import linkedlist.ListNode
+import linkedlist.NodeUtils
+import linkedlist.NodeUtils.arrayToList
 
 class L142KT {
     fun detectCycle(head: ListNode?): ListNode? {
