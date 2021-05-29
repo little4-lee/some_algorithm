@@ -10,8 +10,8 @@ public class SortCollection7 {
 
     static {
         //        mSorts.add(new BubbleSort());
-//        mSorts.add(new InsertionSort());
-                mSorts.add(new SelectionSort());
+        //        mSorts.add(new InsertionSort());
+        mSorts.add(new SelectionSort());
         //        mSorts.add(new MergeSort());
         //        mSorts.add(new QuickSort());
         //        mSorts.add(new HeapSort());
@@ -100,7 +100,34 @@ public class SortCollection7 {
     private static class MergeSort implements ISort {
         @Override
         public void sort (int[] arr) {
-            // TODO: 2021/5/29
+            if (arr == null) return;
+            merge(arr);
+        }
+
+        private void merge (int[] arr) {
+            doMerge(arr, 0, arr.length - 1);
+        }
+
+        private void doMerge (int[] arr, int from, int to) {
+            if (from >= to) return;
+
+            if (to == from + 1) {
+                if (arr[from] > arr[to]) swap(arr, from, to);
+                return;
+            }
+
+            int[] copy = new int[to - from + 1];
+            int middle = from + (to - from) / 2;
+            doMerge(arr, from, middle);
+            doMerge(arr, middle + 1, to);
+            int i = from;
+            int j = middle + 1;
+            int count = 0;
+            while (i <= middle || j <= to) {
+                if (arr[i] < arr[j]) copy[count++] = arr[i++];
+                else copy[count++] = arr[j++];
+            }
+            System.arraycopy(copy, 0, arr, from, copy.length);
         }
     }
 
