@@ -11,9 +11,9 @@ public class SortCollection7 {
     static {
         //        mSorts.add(new BubbleSort());
         //        mSorts.add(new InsertionSort());
-        mSorts.add(new SelectionSort());
-        //        mSorts.add(new MergeSort());
-        //        mSorts.add(new QuickSort());
+//        mSorts.add(new SelectionSort());
+//                mSorts.add(new MergeSort());
+                mSorts.add(new QuickSort());
         //        mSorts.add(new HeapSort());
     }
 
@@ -134,7 +134,31 @@ public class SortCollection7 {
     private static class QuickSort implements ISort {
         @Override
         public void sort (int[] arr) {
-            // TODO: 2021/5/29
+            if (arr == null) return;
+            quickSort(arr, 0, arr.length - 1);
+        }
+
+        private void quickSort (int[] arr, int start, int end) {
+            if (start >= end) return;
+
+            int partition = partition(arr, start, end);
+            quickSort(arr, start, partition - 1);
+            quickSort(arr, partition + 1, end);
+        }
+
+        private int partition(int [] arr, int start, int end) {
+            int value = arr[end];
+
+            int partition = start;
+            for (int i = start; i < end; i++) {
+                if (arr[i] < value) {
+                    swap(arr, i, partition);
+                    partition++;
+                }
+            }
+            arr[end] = arr[partition];
+            arr[partition] = value;
+            return partition;
         }
     }
 
