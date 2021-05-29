@@ -43,6 +43,19 @@ public class SortCollection7 {
     private static class BubbleSort implements ISort {
         @Override
         public void sort (int[] arr) {
+            if (arr == null) return;
+
+            boolean moved;
+            for (int i = arr.length - 1; i > 0; i--) {
+                moved = false;
+                for (int j = 1; j <= i; j++) {
+                    if (arr[j] < arr[j - 1]) {
+                        swap(arr, j, j - 1);
+                        moved = true;
+                    }
+                }
+                if (!moved) break;
+            }
         }
     }
 
