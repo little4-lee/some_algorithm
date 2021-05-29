@@ -9,19 +9,17 @@ public class SortCollection7 {
     private static List<ISort> mSorts = new LinkedList<>();
 
     static {
-        mSorts.add(new BubbleSort());
-        mSorts.add(new InsertionSort());
-        mSorts.add(new SelectionSort());
-        mSorts.add(new MergeSort());
-        mSorts.add(new QuickSort());
-        mSorts.add(new HeapSort());
+        //        mSorts.add(new BubbleSort());
+//        mSorts.add(new InsertionSort());
+                mSorts.add(new SelectionSort());
+        //        mSorts.add(new MergeSort());
+        //        mSorts.add(new QuickSort());
+        //        mSorts.add(new HeapSort());
     }
 
     public static void main (String[] args) {
 
-        int[][] arrs = {
-                {2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {}, null};
-
+        int[][] arrs = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {}, null};
 
         for (ISort sort : mSorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
@@ -59,14 +57,28 @@ public class SortCollection7 {
         }
     }
 
-    private static class SelectionSort implements ISort {
+    private static class InsertionSort implements ISort {
         @Override
         public void sort (int[] arr) {
-            // TODO: 2021/5/29
+            if (arr == null) return;
+            for (int i = 1; i < arr.length; i++) {
+                //i: first non sorted index
+                int value = arr[i];
+                int insert = i;
+                for (int j = i; j > 0; j--) {
+                    if (arr[j - 1] > value) {
+                        arr[j] = arr[j - 1];
+                        insert = j - 1;
+                    } else {
+                        break;
+                    }
+                }
+                arr[insert] = value;
+            }
         }
     }
 
-    private static class InsertionSort implements ISort {
+    private static class SelectionSort implements ISort {
         @Override
         public void sort (int[] arr) {
             // TODO: 2021/5/29
