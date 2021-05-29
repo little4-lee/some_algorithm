@@ -81,7 +81,19 @@ public class SortCollection7 {
     private static class SelectionSort implements ISort {
         @Override
         public void sort (int[] arr) {
-            // TODO: 2021/5/29
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                int select = i;
+                int max = arr[i];
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > max) {
+                        select = j;
+                        max = arr[j];
+                    }
+                }
+                swap(arr, select, i);
+            }
         }
     }
 
