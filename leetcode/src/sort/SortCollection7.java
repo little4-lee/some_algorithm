@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import sun.lwawt.macosx.CSystemTray;
+
 public class SortCollection7 {
 
     private static List<ISort> mSorts = new LinkedList<>();
@@ -11,10 +13,10 @@ public class SortCollection7 {
     static {
         //        mSorts.add(new BubbleSort());
         //        mSorts.add(new InsertionSort());
-//        mSorts.add(new SelectionSort());
-//                mSorts.add(new MergeSort());
-                mSorts.add(new QuickSort());
-        //        mSorts.add(new HeapSort());
+        //        mSorts.add(new SelectionSort());
+//                        mSorts.add(new MergeSort());
+//        mSorts.add(new QuickSort());
+                mSorts.add(new HeapSort());
     }
 
     public static void main (String[] args) {
@@ -146,7 +148,7 @@ public class SortCollection7 {
             quickSort(arr, partition + 1, end);
         }
 
-        private int partition(int [] arr, int start, int end) {
+        private int partition (int[] arr, int start, int end) {
             int value = arr[end];
 
             int partition = start;
@@ -165,7 +167,46 @@ public class SortCollection7 {
     private static class HeapSort implements ISort {
         @Override
         public void sort (int[] arr) {
-            // TODO: 2021/5/29
+            if (arr == null) return;
+
+            int[] copy = buildHeap(arr);
+            int k = copy.length - 1;
+            while (k > 1) {
+                swap(copy, 1, k);
+                k--;
+                heapify(copy, k, 1);
+            }
+            System.arraycopy(copy, 1, arr, 0, arr.length);
+        }
+
+        /**
+         * 建堆
+         */
+        private int[] buildHeap (int[] arr) {
+            int[] copy = new int[arr.length + 1];
+            System.arraycopy(arr, 0, copy, 1, arr.length);
+            for (int i = arr.length / 2; i >= 1; i--) {
+                heapify(copy, arr.length, i);
+            }
+            return copy;
+        }
+
+        /**
+         * 堆化: 从上往下
+         *
+         * @param arr
+         * @param n
+         * @param i
+         */
+        private void heapify (int[] arr, int n, int i) {
+            while (true) {
+                int minPos = i;
+                if (i * 2 <= n && arr[i] > arr[i * 2]) minPos = i * 2;
+                if (i * 2 + 1 <= n && arr[minPos] > arr[i * 2 + 1]) minPos = i * 2 + 1;
+                if (minPos == i) break;
+                swap(arr, minPos, i);
+                i = minPos;
+            }
         }
     }
 
