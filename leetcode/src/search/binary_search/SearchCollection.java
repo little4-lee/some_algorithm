@@ -1,4 +1,4 @@
-package search;
+package search.binary_search;
 
 public class SearchCollection {
 
