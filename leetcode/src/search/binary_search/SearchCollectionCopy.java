@@ -25,23 +25,23 @@ public class SearchCollectionCopy {
         //        System.out.println(collection.bSearch(arr4, target));
         //        System.out.println(collection.bSearch(arr5, target));
 
-//        System.out.println(collection.bSearchExt1(arr1, target));
-//        System.out.println(collection.bSearchExt1(arr2, target));
-//        System.out.println(collection.bSearchExt1(arr3, target));
-//        System.out.println(collection.bSearchExt1(arr4, target));
-//        System.out.println(collection.bSearchExt1(arr5, target));
+        //        System.out.println(collection.bSearchExt1(arr1, target));
+        //        System.out.println(collection.bSearchExt1(arr2, target));
+        //        System.out.println(collection.bSearchExt1(arr3, target));
+        //        System.out.println(collection.bSearchExt1(arr4, target));
+        //        System.out.println(collection.bSearchExt1(arr5, target));
 
-                System.out.println(collection.bSearchExt2(arr1, target));
-                System.out.println(collection.bSearchExt2(arr2, target));
-                System.out.println(collection.bSearchExt2(arr3, target));
-                System.out.println(collection.bSearchExt2(arr4, target));
-                System.out.println(collection.bSearchExt2(arr5, target));
+        //                System.out.println(collection.bSearchExt2(arr1, target));
+        //                System.out.println(collection.bSearchExt2(arr2, target));
+        //                System.out.println(collection.bSearchExt2(arr3, target));
+        //                System.out.println(collection.bSearchExt2(arr4, target));
+        //                System.out.println(collection.bSearchExt2(arr5, target));
 
-        //        System.out.println(collection.bSearchExt3(arr1, target));
-        //        System.out.println(collection.bSearchExt3(arr2, target));
-        //        System.out.println(collection.bSearchExt3(arr3, target));
-        //        System.out.println(collection.bSearchExt3(arr4, target));
-        //        System.out.println(collection.bSearchExt3(arr5, target));
+        System.out.println(collection.bSearchExt3(arr1, target));
+        System.out.println(collection.bSearchExt3(arr2, target));
+        System.out.println(collection.bSearchExt3(arr3, target));
+        System.out.println(collection.bSearchExt3(arr4, target));
+        System.out.println(collection.bSearchExt3(arr5, target));
 
         //        System.out.println(collection.bSearchExt4(arr1, target));
         //        System.out.println(collection.bSearchExt4(arr2, target));
@@ -134,7 +134,22 @@ public class SearchCollectionCopy {
      * @return
      */
     public int bSearchExt3 (int[] arr, int target) {
-        // TODO: 2021/5/30
+        if (arr == null) return -1;
+
+        int lo = 0;
+        int hi = arr.length - 1;
+
+        while (lo <= hi) {
+            int middle = lo + ((hi - lo) >> 1);
+            if (arr[middle] >= target) {
+                if (middle == 0 || arr[middle - 1] < target) return middle;
+                else hi = middle - 1;
+            } else {
+                //middle < target
+                lo = middle + 1;
+            }
+        }
+
         return -1;
     }
 
