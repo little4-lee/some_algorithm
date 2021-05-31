@@ -1,6 +1,6 @@
 package tree.l144_binary_tree_preorder_traversal;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,22 +23,22 @@ import tree.TreeUtils;
  *
  * Output: [1,2,3]
  */
-public class L144TraversalPreOrder {
+public class L144Copy2 {
 
     public List<Integer> preOrderTraversal (TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
 
-        while (p != null || !stack.isEmpty()) {
+        TreeNode p = root;
+        Stack<TreeNode> s = new Stack<>();
+        List<Integer> list = new LinkedList<>();
+
+        while (p != null || !s.isEmpty()) {
             while (p != null) {
                 list.add(p.val);
-                if (p.right != null) stack.push(p.right);
+                if (p.right != null) s.push(p.right);
                 p = p.left;
             }
-
-            if (!stack.isEmpty()) {
-                p = stack.pop();
+            if (!s.isEmpty()) {
+                p = s.pop();
             }
         }
 
@@ -46,12 +46,12 @@ public class L144TraversalPreOrder {
     }
 
     public static void main (String[] args) {
-        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);
+        TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
+//        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);
 
 
         //        TreeUtils.printTree(node);
-        List<Integer> list = new L144TraversalPreOrder().preOrderTraversal(node);
+        List<Integer> list = new L144Copy2().preOrderTraversal(node);
         for (int i : list) System.out.print(i + " ");
     }
-
 }
