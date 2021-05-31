@@ -43,7 +43,7 @@ public class L160Copy {
 
         ListNode pA2 = headA;
         ListNode pB2 = headB;
-        
+
         if (diff > 0) for (int i = 0; i < diff; i++) pA2 = pA2.next;
         else for (int i = 0; i < -diff; i++) pB2 = pB2.next;
 
