@@ -1,7 +1,9 @@
-package tree;
+package tree.l104_maximum_depth_of_binary_tree;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import tree.TreeNode;
 
 /**
  * Maximum Depth of Binary Tree
