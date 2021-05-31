@@ -1,7 +1,9 @@
-package tree;
+package tree.l111_minimum_depth_of_binary_tree;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import tree.TreeNode;
 
 /**
  * Minimum Depth of Binary Tree
