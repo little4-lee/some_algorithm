@@ -1,8 +1,10 @@
-package tree;
+package tree.l94_binary_tree_inorder_traversal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import tree.TreeNode;
 
 /**
  * Binary Tree Inorder Traversal

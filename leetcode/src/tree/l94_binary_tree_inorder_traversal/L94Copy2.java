@@ -1,6 +1,6 @@
 package tree.l94_binary_tree_inorder_traversal;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -21,22 +21,23 @@ import tree.TreeUtils;
  * <p>
  * Output: [1,3,2]
  */
-public class L94Copy {
+public class L94Copy2 {
     public List<Integer> inorderTraversal (TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        TreeNode p = root;
-        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new LinkedList<>();
 
-        while (p != null || !stack.isEmpty()) {
+        TreeNode p = root;
+        Stack<TreeNode> s = new Stack<>();
+
+        while (p != null || !s.isEmpty()) {
             while (p != null) {
-                stack.push(p);
+                s.push(p);
                 p = p.left;
             }
 
-            if (!stack.empty()) {
-                p = stack.pop();
-                list.add(p.val);
-                p = p.right;
+            if (!s.isEmpty()) {
+                TreeNode temp = s.pop();
+                list.add(temp.val);
+                if (temp.right != null) p = temp.right;
             }
         }
 
@@ -45,10 +46,11 @@ public class L94Copy {
 
     public static void main (String[] args) {
         TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
+//        TreeNode node = TreeUtils.array2Tree(1, 2, 3, 4, null, 6, null, null, 9);
 
 
 //        TreeUtils.printTree(node);
-        List<Integer> list = new L94Copy().inorderTraversal(node);
+        List<Integer> list = new L94Copy2().inorderTraversal(node);
         for (int i : list) System.out.print(i + " ");
     }
 }
