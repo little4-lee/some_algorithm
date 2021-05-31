@@ -22,29 +22,33 @@ import tree.TreeUtils;
  * <p>
  * Output: [3,2,1]
  */
-public class L145Copy {
+public class L145Copy3 {
     public List<Integer> postOrderTraversal (TreeNode root) {
         List<Integer> list = new LinkedList<>();
+
         TreeNode p = root;
-        TreeNode lastVisit = null;
         Stack<TreeNode> s = new Stack<>();
+        TreeNode lastVisit = null;
 
         while (p != null || !s.isEmpty()) {
             while (p != null) {
                 s.push(p);
                 p = p.left;
             }
-            p = s.peek();
 
-            if (p.right == null || p.right == lastVisit) {
-                s.pop();
-                list.add(p.val);
-                lastVisit = p;
-                p = null;
-            } else {
-                p = p.right;
+            if (!s.isEmpty()) {
+                TreeNode node = s.peek();
+
+                if (node.right != null && node.right != lastVisit) {
+                    p = node.right;
+                } else {
+                    s.pop();
+                    list.add(node.val);
+                    lastVisit = node;
+                }
             }
         }
+
         return list;
     }
 
@@ -55,7 +59,7 @@ public class L145Copy {
 
 
         //        TreeUtils.printTree(node);
-        List<Integer> list = new L145Copy().postOrderTraversal(node);
+        List<Integer> list = new L145Copy3().postOrderTraversal(node);
         for (int i : list) System.out.print(i + " ");
 
     }
