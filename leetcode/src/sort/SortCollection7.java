@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import sun.lwawt.macosx.CSystemTray;
-
 public class SortCollection7 {
 
     private static List<ISort> mSorts = new LinkedList<>();

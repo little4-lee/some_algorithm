@@ -1,7 +1,5 @@
 package linkedlist.l160_intersection_of_two_linked_lists;
 
-import javax.swing.JFormattedTextFieldBeanInfo;
-
 import linkedlist.ListNode;
 import linkedlist.NodeUtils;
 

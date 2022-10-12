@@ -69,10 +69,10 @@ public class L226 {
     }
 
     public static void main (String[] args) {
-        TreeNode node = TreeUtils.array2Tree(4,2,7,1,3,6,9);
-        TreeUtils.printTreeLevel(node);
-        System.out.println();
-        TreeUtils.printTreeLevel(new L226().invertTree(node));
+//        TreeNode node = TreeUtils.array2Tree(4,2,7,1,3,6,9);
+//        TreeUtils.printTreeLevel(node);
+//        System.out.println();
+//        TreeUtils.printTreeLevel(new L226().invertTree(node));
     }
 
 }

@@ -1,7 +1,5 @@
 package sort;
 
-import com.sun.istack.internal.NotNull;
-
 import linkedlist.ListNode;
 import linkedlist.NodeUtils;
 
@@ -22,7 +20,7 @@ class Heap {
     private ListNode[] elements;
     private int count;
 
-    public Heap (@NotNull ListNode... args) {
+    public Heap (ListNode... args) {
         elements = new ListNode[args.length + 1];
         buildHeap(args);
     }

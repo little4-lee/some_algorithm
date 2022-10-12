@@ -1,17 +1,12 @@
 package tree.l102_binary_tree_level_order_traversal;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
+import tree.TreeNode;
+import tree.TreeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
-import linkedlist.ListNode;
-import tree.TreeNode;
-import tree.TreeUtils;
 
 /**
  * 102. Binary Tree Level Order Traversal
