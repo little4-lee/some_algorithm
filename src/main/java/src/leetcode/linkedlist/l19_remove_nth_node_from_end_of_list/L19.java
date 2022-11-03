@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l19_remove_nth_node_from_end_of_list;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 19. Remove Nth Node From End of List
@@ -58,8 +60,8 @@ public class L19 {
     public static void main (String[] args) {
         L19 l = new L19();
 //        ListNode list = NodeUtils.arrayToList(1, 2, 3, 4, 5);
-        ListNode list = NodeUtils.arrayToList(1, 2);
+        ListNode list = arrayToList(1, 2);
 //        NodeUtils.printList(l.removeNthFromEnd(list, 2));
-        NodeUtils.printList(l.removeNthFromEnd(list, 1));
+        printList(l.removeNthFromEnd(list, 1));
     }
 }

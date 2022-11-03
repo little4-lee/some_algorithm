@@ -1,5 +1,9 @@
 package linkedlist
 
+import common.ListNode
+import common.arrayToList
+import common.printList
+
 /**
  * 19. Remove Nth Node From End of List
  *
@@ -30,10 +34,10 @@ fun main() {
 //    printList(removeNthFromEnd(arrayToList(1), 1))
 }
 
-    fun removeNthFromEnd(head: _root_ide_package_.leetcode.linkedlist.ListNode?, n: Int): _root_ide_package_.leetcode.linkedlist.ListNode? {
+    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
         head ?: return head
 
-        val soldier = _root_ide_package_.leetcode.linkedlist.ListNode(0)
+        val soldier = ListNode(0)
         soldier.next = head
 
         var index = 1

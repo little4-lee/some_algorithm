@@ -1,10 +1,11 @@
 package leetcode.linkedlist.l876_middle_of_the_linked_list;
 
+import common.ListNode;
+
 import java.util.LinkedList;
 import java.util.List;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import static common.ListUtilsKt.arrayToList;
 
 /**
  * 876. Middle of the Linked List
@@ -32,14 +33,14 @@ public class L876 {
 
     public static void main (String[] args) {
         List<ListNode> nodes = new LinkedList<>();
-        nodes.add(NodeUtils.arrayToList(1, 2, 6, 3, 4, 5, 1, 2, 6, 3, 4, 5));
-        nodes.add(NodeUtils.arrayToList(1, 2, 6, 3, 4, 5));
-        nodes.add(NodeUtils.arrayToList(1, 2, 3));
-        nodes.add(NodeUtils.arrayToList(1, 2));
-        nodes.add(NodeUtils.arrayToList(1));
+        nodes.add(arrayToList(1, 2, 6, 3, 4, 5, 1, 2, 6, 3, 4, 5));
+        nodes.add(arrayToList(1, 2, 6, 3, 4, 5));
+        nodes.add(arrayToList(1, 2, 3));
+        nodes.add(arrayToList(1, 2));
+        nodes.add(arrayToList(1));
         L876 l = new L876();
         for (ListNode node: nodes) {
-            System.out.println(l.middleNode(node).val);
+            System.out.println(l.middleNode(node).value);
 //            NodeUtils.printList(l.middleNode(node));
         }
     }

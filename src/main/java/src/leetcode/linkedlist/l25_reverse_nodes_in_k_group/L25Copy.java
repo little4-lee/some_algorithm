@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l25_reverse_nodes_in_k_group;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 25. Reverse Nodes in k-Group
@@ -89,8 +91,8 @@ public class L25Copy {
     public static void main (String[] args) {
 //        ListNode node = NodeUtils.arrayToList(1, 2, 3, 4, 5, 6, 7, 8);
 //        ListNode node = NodeUtils.arrayToList(1, 2, 3, 4);
-        ListNode node = NodeUtils.arrayToList(1, 2);
+        ListNode node = arrayToList(1, 2);
 //        ListNode node = NodeUtils.arrayToList(1, 2, 3);
-        NodeUtils.printList(new L25Copy().reverseKGroup(node, 2));
+        printList(new L25Copy().reverseKGroup(node, 2));
     }
 }

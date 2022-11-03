@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l147_insertion_sort_list;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 147. Insertion Sort List
@@ -27,7 +29,7 @@ public class L147 {
             cur = soldier;
 
             while (cur.next != null) {
-                if (p.val < cur.next.val) {
+                if (p.value < cur.next.value) {
                     p.next = cur.next;
                     cur.next = p;
                     break;
@@ -47,7 +49,7 @@ public class L147 {
     }
 
     public static void main (String[] args) {
-        ListNode list = NodeUtils.arrayToList(2,4,5,6,3,1,9,3,3,3);
-        NodeUtils.printList(new L147().insertionSortList(list));
+        ListNode list = arrayToList(2,4,5,6,3,1,9,3,3,3);
+        printList(new L147().insertionSortList(list));
     }
 }

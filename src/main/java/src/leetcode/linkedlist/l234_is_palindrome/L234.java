@@ -1,7 +1,8 @@
 package leetcode.linkedlist.l234_is_palindrome;
 
-import leetcode.linkedlist.ListNode;
-import linkedlist.NodesKt;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
 
 public class L234 {
     public boolean isPalindrome (ListNode head) {
@@ -38,7 +39,7 @@ public class L234 {
         ListNode p1 = head1;
         ListNode p2 = head2;
         while (p1 != null && p2 != null) {
-            if (p1.val == p2.val) {
+            if (p1.value == p2.value) {
                 p1 = p1.next;
                 p2 = p2.next;
                 continue;
@@ -54,13 +55,13 @@ public class L234 {
     }
 
     public static void main (String[] args) {
-        ListNode head1 = NodesKt.arrayToList(1, 2, 3, 4, 5);
-        ListNode head2 = NodesKt.arrayToList(1,2,3,4,5,4,3,2,1);
-        ListNode head3 = NodesKt.arrayToList(1,2,3,4,5,4,3,2,1);
-        ListNode head4 = NodesKt.arrayToList(1,2,1);
-        ListNode head5 = NodesKt.arrayToList(1,2);
-        ListNode head6 = NodesKt.arrayToList(1);
-        ListNode head7 = NodesKt.arrayToList();
+        ListNode head1 = arrayToList(1, 2, 3, 4, 5);
+        ListNode head2 = arrayToList(1,2,3,4,5,4,3,2,1);
+        ListNode head3 = arrayToList(1,2,3,4,5,4,3,2,1);
+        ListNode head4 = arrayToList(1,2,1);
+        ListNode head5 = arrayToList(1,2);
+        ListNode head6 = arrayToList(1);
+        ListNode head7 = arrayToList();
 
         L234 obj = new L234();
         System.out.println(obj.isPalindrome(head1));

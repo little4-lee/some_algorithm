@@ -1,15 +1,15 @@
 package leetcode.tree.l145_binary_tree_postorder_traversal
 
-import leetcode.tree.TreeNode
-import leetcode.tree.TreeUtils
+import common.TreeNode
+import common.TreeUtils
 import java.util.*
 
 class L145KTCopy {
-    fun postOrderTraversal(root: _root_ide_package_.leetcode.tree.TreeNode?): List<Int> {
+    fun postOrderTraversal(root: TreeNode?): List<Int> {
         var p = root
         val list = mutableListOf<Int>()
-        val s = Stack<_root_ide_package_.leetcode.tree.TreeNode>()
-        var lastVisit: _root_ide_package_.leetcode.tree.TreeNode? = null
+        val s = Stack<TreeNode>()
+        var lastVisit: TreeNode? = null
 
         while (p != null || s.isNotEmpty()) {
             while (p != null) {
@@ -33,7 +33,7 @@ class L145KTCopy {
 }
 
 fun main() {
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
+    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
 
     //        TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
 //        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);

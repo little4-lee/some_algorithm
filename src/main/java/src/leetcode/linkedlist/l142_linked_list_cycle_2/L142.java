@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l142_linked_list_cycle_2;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.addCycle;
+import static common.ListUtilsKt.arrayToList;
 
 /**
  * Linked List Cycle II
@@ -41,9 +43,9 @@ public class L142 {
     }
 
     public static void main (String[] args) {
-        ListNode head = NodeUtils.arrayToList(1, 2, 3, 4, 5, 6, 7, 8);
-        NodeUtils.addCycle(head, 6);
+        ListNode head = arrayToList(1, 2, 3, 4, 5, 6, 7, 8);
+        addCycle(head, 6);
 
-        System.out.println(new L142().detectCycle(head).val);
+        System.out.println(new L142().detectCycle(head).value);
     }
 }

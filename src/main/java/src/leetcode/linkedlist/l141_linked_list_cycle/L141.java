@@ -1,6 +1,6 @@
 package leetcode.linkedlist.l141_linked_list_cycle;
 
-import leetcode.linkedlist.ListNode;
+import common.ListNode;
 
 /**
  * https://leetcode.com/problems/linked-list-cycle/

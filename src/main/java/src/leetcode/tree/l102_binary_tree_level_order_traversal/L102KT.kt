@@ -1,11 +1,11 @@
 package leetcode.tree.l102_binary_tree_level_order_traversal
 
-import leetcode.tree.TreeNode
-import leetcode.tree.TreeUtils
+import common.TreeNode
+import common.TreeUtils
 import java.util.concurrent.LinkedBlockingQueue
 
 class L102KT {
-    fun levelOrder(root: _root_ide_package_.leetcode.tree.TreeNode?): List<List<Int>> {
+    fun levelOrder(root: TreeNode?): List<List<Int>> {
         if (root == null) {
             return mutableListOf()
         }
@@ -13,7 +13,7 @@ class L102KT {
         var cur = 0
         var countOfLevel = 0;
 
-        val queue = LinkedBlockingQueue<_root_ide_package_.leetcode.tree.TreeNode>()
+        val queue = LinkedBlockingQueue<TreeNode>()
         var p = root
         queue.offer(root)
 
@@ -37,7 +37,7 @@ class L102KT {
 }
 
 fun main() {
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
+    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
 
     //        TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
 //        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);

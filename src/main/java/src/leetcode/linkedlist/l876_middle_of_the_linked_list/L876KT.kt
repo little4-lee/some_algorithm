@@ -1,5 +1,9 @@
 package linkedlist
 
+import common.ListNode
+import common.arrayToList
+import common.printList
+
 /**
  * 876. Middle of the Linked List
  *
@@ -11,13 +15,13 @@ package linkedlist
 fun main() {
 //    val node = NodeUtils.arrayToList(1, 2, 6, 3, 4, 5, 1, 2, 6, 3, 4, 5)
 //    val node = NodeUtils.arrayToList(1, 2, 6, 3, 4, 5)
-    val node = _root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2, 3)
+    val node = arrayToList(1, 2, 3)
 //    val node = NodeUtils.arrayToList(1, 2)
 //    val node = NodeUtils.arrayToList(1)
-    _root_ide_package_.leetcode.linkedlist.NodeUtils.printList(middleNode(node))
+    printList(middleNode(node))
 }
 
-fun middleNode(head: _root_ide_package_.leetcode.linkedlist.ListNode?): _root_ide_package_.leetcode.linkedlist.ListNode? {
+fun middleNode(head: ListNode?): ListNode? {
     if (head == null) return null
 
     var fast = head

@@ -1,5 +1,8 @@
 package leetcode.tree;
 
+import common.TreeNode;
+import common.TreeUtils;
+
 /**
  * 606. Construct String from Binary Tree
  * https://leetcode.com/problems/construct-string-from-binary-tree/

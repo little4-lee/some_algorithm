@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l23_merge_k_sorted_list;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 23. Merge k Sorted Lists
@@ -78,8 +80,8 @@ public class L23HeapSort {
     private void heapify (ListNode[] nodes, int n, int i) {
         while (true) {
             int minPos = i;
-            if (i * 2 <= n && nodes[i].val > nodes[i * 2].val) minPos = i * 2;
-            if (i * 2 + 1 <= n && nodes[minPos].val > nodes[i * 2 + 1].val) minPos = i * 2 + 1;
+            if (i * 2 <= n && nodes[i].value > nodes[i * 2].value) minPos = i * 2;
+            if (i * 2 + 1 <= n && nodes[minPos].value > nodes[i * 2 + 1].value) minPos = i * 2 + 1;
             if (minPos == i) break;
             swap(nodes, i, minPos);
             i = minPos;
@@ -94,14 +96,14 @@ public class L23HeapSort {
 
 
     public static void main (String[] args) {
-        ListNode a1 = NodeUtils.arrayToList(1, 2, 3, 4, 5);
-        ListNode a2 = NodeUtils.arrayToList(2, 2, 2, 4, 4);
-        ListNode a3 = NodeUtils.arrayToList(5, 6);
-        ListNode a4 = NodeUtils.arrayToList(8, 8, 8);
+        ListNode a1 = arrayToList(1, 2, 3, 4, 5);
+        ListNode a2 = arrayToList(2, 2, 2, 4, 4);
+        ListNode a3 = arrayToList(5, 6);
+        ListNode a4 = arrayToList(8, 8, 8);
         ListNode[] lists = {a1, a2, a3, a4};
         //        NodeUtils.printList(new L23().mergeKLists(lists));
 //        NodeUtils.printList(new L23HeapSort().mergeKLists(lists));
-        NodeUtils.printList(new L23HeapSort().mergeKLists(new ListNode[]{a1}));
+        printList(new L23HeapSort().mergeKLists(new ListNode[]{a1}));
     }
 
 

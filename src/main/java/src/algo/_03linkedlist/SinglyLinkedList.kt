@@ -1,10 +1,11 @@
 package algo._03linkedlist
 
-import algo.utils.Node
+import common.ListNode
+
 
 class SinglyLinkedList {
 
-    var head: Node? = null
+    var head: ListNode? = null
 
     constructor(array: IntArray) {
 
@@ -25,27 +26,27 @@ class SinglyLinkedList {
      * @param value
      */
     fun insertToTail(value: Int) {
-        val newNode = Node(value)
-        insertToTail(newNode)
+        val newListNode = ListNode(value)
+        insertToTail(newListNode)
     }
 
     /**
-     * 在链表尾部插入节点newNode
+     * 在链表尾部插入节点newListNode
      *
-     * @param newNode
+     * @param newListNode
      */
-    fun insertToTail(newNode: Node) {
+    fun insertToTail(newListNode: ListNode) {
 
         if (head == null) {
-            head = newNode
+            head = newListNode
         } else {
             var q = head
 
             while (q?.next != null) {
                 q = q.next
             }
-            newNode.next = q?.next
-            q?.next = newNode
+            newListNode.next = q?.next
+            q?.next = newListNode
         }
     }
 
@@ -67,11 +68,11 @@ class SinglyLinkedList {
      * 时间复杂度: O(n)
      * 控件复杂度: O(1)
      */
-    fun reverseList (head: Node?) : Node? {
+    fun reverseList (head: ListNode?) : ListNode? {
 
-        var newList: Node? = null
+        var newList: ListNode? = null
         var p = head
-        var pNext: Node?
+        var pNext: ListNode?
 
         while (p?.next != null) {
             pNext = p.next
@@ -97,14 +98,14 @@ class SinglyLinkedList {
      * 单链表反转
      * 带头
      */
-    fun revereListWithHead (p: Node?) : Node? {
+    fun revereListWithHead (p: ListNode?) : ListNode? {
 
         //指定一个head
-        var head = Node(8080)
+        var head = ListNode(8080)
 
         //head永远是head，遍历的买一个新节点插在head后面
         var q = p
-        var qNext: Node? = null
+        var qNext: ListNode? = null
         while (q != null) {
             qNext = q.next
 
@@ -121,7 +122,7 @@ class SinglyLinkedList {
     /**
      * 链表中环的检测
      */
-    fun hadCycle (head: Node?): Boolean {
+    fun hadCycle (head: ListNode?): Boolean {
         if (head == null) return false
 
         var fast = head.next
@@ -145,7 +146,7 @@ class SinglyLinkedList {
     /**
      * 链表中的换检测：开始入环的第一个节点
      */
-    fun detectCycle (head: Node?) : Node? {
+    fun detectCycle (head: ListNode?) : ListNode? {
         if (head == null || head.next == null || head.next?.next == null) return null
 
         var fast = head.next?.next
@@ -175,7 +176,7 @@ class SinglyLinkedList {
      *
      * 直观的做法(未使用哨兵节点)
      */
-//    fun mergeTwoOrderedList (l1: Node?, l2: Node?) : Node? {
+//    fun mergeTwoOrderedList (l1: ListNode?, l2: ListNode?) : ListNode? {
 //
 //        if (l1 == null) {
 //            return l2
@@ -186,8 +187,8 @@ class SinglyLinkedList {
 //        var head = l1
 //        var p1 = head
 //        var p2 = l2
-//        var p1Pre: Node? = null
-//        var p2Next: Node? = null
+//        var p1Pre: ListNode? = null
+//        var p2Next: ListNode? = null
 //
 //        //把p2并入p1
 //        while (p1 != null && p2 != null) {
@@ -246,9 +247,9 @@ class SinglyLinkedList {
      * 合并两个有序列表
      * 使用了soldier节点简化问题
      */
-    fun mergeTwoOrderedList (l1: Node?, l2: Node?) : Node? {
+    fun mergeTwoOrderedList (l1: ListNode?, l2: ListNode?) : ListNode? {
 
-        var soldier = Node(0)
+        var soldier = ListNode(0)
         var p = soldier
         var p1 = l1
         var p2 = l2
@@ -275,7 +276,7 @@ class SinglyLinkedList {
      * 删除链表中的倒数第N个节点
      *
      */
-    fun removeNthFromEnd(head: Node?, n: Int): Node? {
+    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
         //思路：k已知，指针指向length-k+1个位置即可
         var fast = head
         var pos = 1
@@ -288,7 +289,7 @@ class SinglyLinkedList {
         if (fast == null) return head
 
         var slow = head
-        var prev: Node? = null
+        var prev: ListNode? = null
 
         while (fast?.next != null) {
 
@@ -306,7 +307,7 @@ class SinglyLinkedList {
 
     }
 
-    fun findMidNode (head: Node?) : Node? {
+    fun findMidListNode (head: ListNode?) : ListNode? {
 
         if (head == null) return null
 
@@ -325,10 +326,10 @@ class SinglyLinkedList {
      * 链表
      * 每k位逆序
      */
-    fun reverseEachKLength(head: Node?, k: Int) {
+    fun reverseEachKLength(head: ListNode?, k: Int) {
         if (head == null) return
         //哨兵节点
-        var soldier = Node(8080)
+        var soldier = ListNode(8080)
 
         var pSlow = head
         var pFast = head
@@ -359,19 +360,4 @@ class SinglyLinkedList {
             }
         }
     }
-
-    companion object {
-
-        fun printList (head: Node?) {
-
-            var content = ""
-            var p = head
-            while (p != null) {
-                content += "" + p.value + "\n"
-                p = p.next
-            }
-            println(content)
-        }
-    }
-
 }

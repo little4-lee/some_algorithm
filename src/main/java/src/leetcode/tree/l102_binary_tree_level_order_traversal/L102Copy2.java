@@ -1,7 +1,7 @@
 package leetcode.tree.l102_binary_tree_level_order_traversal;
 
-import leetcode.tree.TreeNode;
-import leetcode.tree.TreeUtils;
+import common.TreeNode;
+import common.TreeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

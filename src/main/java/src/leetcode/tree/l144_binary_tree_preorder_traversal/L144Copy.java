@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import leetcode.tree.TreeNode;
-import leetcode.tree.TreeUtils;
+import common.TreeNode;
+import common.TreeUtils;
 
 /**
  * Binary Tree Preorder Traversal

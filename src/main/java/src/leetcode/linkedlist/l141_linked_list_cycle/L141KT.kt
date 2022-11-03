@@ -1,10 +1,10 @@
 package leetcode.linkedlist.l141_linked_list_cycle
 
-import leetcode.linkedlist.ListNode
-import leetcode.linkedlist.NodeUtils.arrayToList
+import common.ListNode
+import common.arrayToList
 
 class L141KT {
-    fun hasCycle(head: _root_ide_package_.leetcode.linkedlist.ListNode?): Boolean {
+    fun hasCycle(head: ListNode?): Boolean {
         head ?: return false
 
         var slow = head

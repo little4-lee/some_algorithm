@@ -1,5 +1,9 @@
 package leetcode.linkedlist;
 
+import common.ListNode;
+
+import static common.ListUtilsKt.printList;
+
 public class LruCache {
     private ListNode mSoldier = new ListNode(0);
     private int mCount = 0;
@@ -21,7 +25,7 @@ public class LruCache {
         ListNode pre = mSoldier;
         boolean cached = false;
         while (p != null) {
-            if (p.val == val) {
+            if (p.value == val) {
                 cached = true;
                 remove(pre, p);
                 addToHead(val);
@@ -60,7 +64,7 @@ public class LruCache {
         ListNode p = mSoldier.next;
         ListNode pre = mSoldier;
         while (p != null) {
-            if (p.val == val) {
+            if (p.value == val) {
                 remove(pre, p);
             }
             pre = p;
@@ -69,7 +73,7 @@ public class LruCache {
     }
 
     private void debugList() {
-        NodeUtils.printList(mSoldier.next);
+        printList(mSoldier.next);
         System.out.println();
     }
 

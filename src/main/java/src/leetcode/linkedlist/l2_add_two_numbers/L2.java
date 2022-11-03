@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l2_add_two_numbers;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 2. Add Two Numbers
@@ -31,7 +33,7 @@ public class L2 {
         boolean up = false;
 
         while (p1 != null && p2 != null) {
-            int val = p1.val + p2.val + (up ? 1 : 0);
+            int val = p1.value + p2.value + (up ? 1 : 0);
 
             //进位
             if (val >= 10) {
@@ -68,13 +70,13 @@ public class L2 {
                 break;
             }
 
-            if (pEnd.val != 9) {
-                pEnd.val += 1;
+            if (pEnd.value != 9) {
+                pEnd.value += 1;
                 break;
             }
 
             //pEnd.val == 9
-            pEnd.val = 0;
+            pEnd.value = 0;
             pre = pEnd;
             pEnd = pEnd.next;
         }
@@ -89,12 +91,12 @@ public class L2 {
 //        ListNode list2 = NodeUtils.arrayToList(1, 9, 9, 9, 9, 9, 9, 9, 9, 9);
 //        ListNode list1 = NodeUtils.arrayToList(9);
 //        ListNode list2 = NodeUtils.arrayToList(1, 9, 9);
-                ListNode list1 = NodeUtils.arrayToList(5);
-                ListNode list2 = NodeUtils.arrayToList(5);
+                ListNode list1 = arrayToList(5);
+                ListNode list2 = arrayToList(5);
 //                ListNode list1 = NodeUtils.arrayToList(0);
 //                ListNode list2 = NodeUtils.arrayToList(0);
 //                ListNode list1 = NodeUtils.arrayToList(1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1);
 //                ListNode list2 = NodeUtils.arrayToList(5,6,4);
-        NodeUtils.printList(new L2().addTwoNumbers(list1, list2));
+        printList(new L2().addTwoNumbers(list1, list2));
     }
 }

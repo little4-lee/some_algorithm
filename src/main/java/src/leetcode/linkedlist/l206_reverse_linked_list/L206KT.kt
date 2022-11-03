@@ -1,8 +1,8 @@
 package leetcode.linkedlist.l206_reverse_linked_list
 
-import leetcode.linkedlist.ListNode
-import leetcode.linkedlist.NodeUtils.arrayToList
-import leetcode.linkedlist.NodeUtils.printList
+import common.ListNode
+import common.arrayToList
+import common.printList
 
 /**
  * 哨兵节点
@@ -10,10 +10,10 @@ import leetcode.linkedlist.NodeUtils.printList
  * 遍历原链表，每一个节点都插在哨兵的后面
  */
 class L206KT {
-    fun reverseList(head: _root_ide_package_.leetcode.linkedlist.ListNode?): _root_ide_package_.leetcode.linkedlist.ListNode? {
+    fun reverseList(head: ListNode?): ListNode? {
         head ?: return null
 
-        val soldier = _root_ide_package_.leetcode.linkedlist.ListNode(0)
+        val soldier = ListNode(0)
         var p = head
 
         while (p != null) {

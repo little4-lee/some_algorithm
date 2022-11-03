@@ -1,6 +1,5 @@
-package leetcode.tree;
+package common;
 
-import leetcode.tree.l144_binary_tree_preorder_traversal.L144;
 import leetcode.tree.l144_binary_tree_preorder_traversal.L144;
 
 public class TreeUtils {
@@ -12,9 +11,7 @@ public class TreeUtils {
         if (arr == null || arr.length == 0) return null;
 
         Integer [] treeArr = new Integer[arr.length + 1];
-        for (int i = 0; i < arr.length; i++) {
-            treeArr[i + 1] = arr[i];
-        }
+        System.arraycopy(arr, 0, treeArr, 1, arr.length);
 
         TreeNode root = getNode(treeArr, 1);
         return root;

@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import leetcode.tree.TreeNode;
-import leetcode.tree.TreeUtils;
+import common.TreeNode;
+import common.TreeUtils;
 
 /**
  * 102. Binary Tree Level Order Traversal

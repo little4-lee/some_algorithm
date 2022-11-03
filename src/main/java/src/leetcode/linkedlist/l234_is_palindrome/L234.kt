@@ -1,14 +1,17 @@
 package linkedlist
 
-fun isPalindrome(head: _root_ide_package_.leetcode.linkedlist.ListNode?): Boolean {
+import common.ListNode
+import common.arrayToList
+
+fun isPalindrome(head: ListNode?): Boolean {
     head ?: return true
     head.next ?: return true
 
-    val flag = _root_ide_package_.leetcode.linkedlist.ListNode(-1000)
+    val flag = ListNode(-1000)
 
     var fast = head
     var slow = head
-    var slowNext: _root_ide_package_.leetcode.linkedlist.ListNode?
+    var slowNext: ListNode?
 
     while (fast?.next?.next != null) {
         fast = fast.next.next
@@ -32,11 +35,11 @@ fun isPalindrome(head: _root_ide_package_.leetcode.linkedlist.ListNode?): Boolea
     }
 }
 
-fun theSameLinkedList(first: _root_ide_package_.leetcode.linkedlist.ListNode, second: _root_ide_package_.leetcode.linkedlist.ListNode): Boolean {
-    var f: _root_ide_package_.leetcode.linkedlist.ListNode? = first
-    var s: _root_ide_package_.leetcode.linkedlist.ListNode? = second
+fun theSameLinkedList(first: ListNode, second: ListNode): Boolean {
+    var f: ListNode? = first
+    var s: ListNode? = second
     while (f != null && s != null) {
-        if (f.`val` == s.`val`) {
+        if (f.value == s.value) {
             f = f.next
             s = s.next
             continue
@@ -47,10 +50,10 @@ fun theSameLinkedList(first: _root_ide_package_.leetcode.linkedlist.ListNode, se
 }
 
 fun main() {
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2)))
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2, 1)))
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2, 2, 1)))
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2, 3, 3, 2, 1)))
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1)))
-    println(isPalindrome(_root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList()))
+    println(isPalindrome(arrayToList(1, 2)))
+    println(isPalindrome(arrayToList(1, 2, 1)))
+    println(isPalindrome(arrayToList(1, 2, 2, 1)))
+    println(isPalindrome(arrayToList(1, 2, 3, 3, 2, 1)))
+    println(isPalindrome(arrayToList(1)))
+    println(isPalindrome(arrayToList()))
 }

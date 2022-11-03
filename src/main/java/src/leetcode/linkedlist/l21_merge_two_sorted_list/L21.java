@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l21_merge_two_sorted_list;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 21. Merge Two Sorted Lists
@@ -40,7 +42,7 @@ public class L21 {
         ListNode p2 = l2;
 
         while (p1 != null&& p2 != null) {
-            if (p1.val <= p2.val) {
+            if (p1.value <= p2.value) {
                 p.next = p1;
                 p1 = p1.next;
             } else {
@@ -58,8 +60,8 @@ public class L21 {
 
     public static void main (String[] args) {
 
-        ListNode l1 = NodeUtils.arrayToList(1, 2, 3, 4, 10, 100);
-        ListNode l2 = NodeUtils.arrayToList(2, 2, 2, 4, 4, 101, 101, 101, 101);
-        NodeUtils.printList(new L21().mergeTwoLists(l1, l2));
+        ListNode l1 = arrayToList(1, 2, 3, 4, 10, 100);
+        ListNode l2 = arrayToList(2, 2, 2, 4, 4, 101, 101, 101, 101);
+        printList(new L21().mergeTwoLists(l1, l2));
     }
 }

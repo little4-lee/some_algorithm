@@ -1,16 +1,16 @@
 package leetcode.linkedlist.l92_reverse_linked_list_2
 
-import leetcode.linkedlist.ListNode
-import leetcode.linkedlist.NodeUtils.arrayToList
-import linkedlist.printList
+import common.ListNode
+import common.arrayToList
+import common.printList
 
 class L92KT {
-    fun reverseBetween(head: _root_ide_package_.leetcode.linkedlist.ListNode?, m: Int, n: Int): _root_ide_package_.leetcode.linkedlist.ListNode? {
-        val soldier = _root_ide_package_.leetcode.linkedlist.ListNode(0)
+    fun reverseBetween(head: ListNode?, m: Int, n: Int): ListNode? {
+        val soldier = ListNode(0)
         soldier.next = head
         var p = head
-        var start: _root_ide_package_.leetcode.linkedlist.ListNode? = null
-        var preStart: _root_ide_package_.leetcode.linkedlist.ListNode? = soldier
+        var start: ListNode? = null
+        var preStart: ListNode? = soldier
         var index = 1
 
         while (p != null && index <= n) {

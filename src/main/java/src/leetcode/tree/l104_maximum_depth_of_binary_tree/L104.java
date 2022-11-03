@@ -3,7 +3,7 @@ package leetcode.tree.l104_maximum_depth_of_binary_tree;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import leetcode.tree.TreeNode;
+import common.TreeNode;
 
 /**
  * Maximum Depth of Binary Tree

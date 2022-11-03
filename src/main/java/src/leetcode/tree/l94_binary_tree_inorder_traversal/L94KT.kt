@@ -1,11 +1,13 @@
 package tree
 
+import common.TreeNode
+import common.TreeUtils
 import java.util.*
 
-fun inorderTraversal(root: _root_ide_package_.leetcode.tree.TreeNode?):  List<Int> {
+fun inorderTraversal(root: TreeNode?):  List<Int> {
     val list = mutableListOf<Int>()
     var p = root
-    val stack = Stack<_root_ide_package_.leetcode.tree.TreeNode>()
+    val stack = Stack<TreeNode>()
 
     while (p != null || stack.isNotEmpty()) {
         while (p != null) {
@@ -24,7 +26,7 @@ fun inorderTraversal(root: _root_ide_package_.leetcode.tree.TreeNode?):  List<In
 }
 
 fun main() {
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4)
+    val node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4)
 
 
 //        TreeUtils.printTree(node);

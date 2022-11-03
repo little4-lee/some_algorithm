@@ -1,15 +1,17 @@
 package algo._02linkedlist;
 
+import common.ListNode;
+
 public class SinglyLinkedList {
 
-    private Node head = null;
+    private ListNode head = null;
 
     public SinglyLinkedList (int[] data) {
         if (data == null || data.length == 0) return;
 
         for (int i = 0; i < data.length; i++) {
             if (i == 0) {
-                head = new Node(data[i]);
+                head = new ListNode(data[i]);
             } else {
                 insertToTail(data[i]);
             }
@@ -20,18 +22,18 @@ public class SinglyLinkedList {
 
     }
 
-    public Node findByValue (int value) {
-        Node p = head;
+    public ListNode findByValue (int value) {
+        ListNode p = head;
 
-        while (p != null && p.getData() != value) {
+        while (p != null && p.getValue() != value) {
             p = p.getNext();
         }
 
         return p;
     }
 
-    public Node findByIndex (int index) {
-        Node p = head;
+    public ListNode findByIndex (int index) {
+        ListNode p = head;
         int pos = 0;
         while (p != null && pos != index) {
             p = p.getNext();
@@ -47,7 +49,7 @@ public class SinglyLinkedList {
      * @param value
      */
     public void insertToHead (int value) {
-        Node newHead = new Node(value);
+        ListNode newHead = new ListNode(value);
         insertToHead(newHead);
     }
 
@@ -56,7 +58,7 @@ public class SinglyLinkedList {
      *
      * @param newNode
      */
-    public void insertToHead (Node newNode) {
+    public void insertToHead (ListNode newNode) {
         if (head == null) {
             newNode.setNext(null);
             head = newNode;
@@ -72,7 +74,7 @@ public class SinglyLinkedList {
      * @param value
      */
     public void insertToTail (int value) {
-        Node newNode = new Node(value);
+        ListNode newNode = new ListNode(value);
         insertToTail(newNode);
     }
 
@@ -81,11 +83,11 @@ public class SinglyLinkedList {
      *
      * @param newNode
      */
-    public void insertToTail (Node newNode) {
+    public void insertToTail (ListNode newNode) {
         if (head == null) {
             head = newNode;
         } else {
-            Node q = head;
+            ListNode q = head;
             while (q.getNext() != null) {
                 q = q.getNext();
             }
@@ -101,8 +103,8 @@ public class SinglyLinkedList {
      * @param p
      * @param value
      */
-    public void insertAfter (Node p, int value) {
-        Node newNode = new Node(value);
+    public void insertAfter (ListNode p, int value) {
+        ListNode newNode = new ListNode(value);
         insertAfter(p, newNode);
     }
 
@@ -112,7 +114,7 @@ public class SinglyLinkedList {
      * @param p
      * @param newNode
      */
-    public void insertAfter (Node p, Node newNode) {
+    public void insertAfter (ListNode p, ListNode newNode) {
         if (p == null) return;
 
         newNode.setNext(p.getNext());
@@ -125,8 +127,8 @@ public class SinglyLinkedList {
      * @param p
      * @param value
      */
-    public void insertBefore (Node p, int value) {
-        Node newNode = new Node(value);
+    public void insertBefore (ListNode p, int value) {
+        ListNode newNode = new ListNode(value);
         insertBefore(p, newNode);
     }
 
@@ -136,7 +138,7 @@ public class SinglyLinkedList {
      * @param p
      * @param newNode
      */
-    public void insertBefore (Node p, Node newNode) {
+    public void insertBefore (ListNode p, ListNode newNode) {
         if (head == null) return;
 
         if (p == head) {
@@ -144,7 +146,7 @@ public class SinglyLinkedList {
             return;
         }
 
-        Node q = head;
+        ListNode q = head;
         while (q != null && p != q.getNext()) {
             q = q.getNext();
         }
@@ -165,10 +167,10 @@ public class SinglyLinkedList {
     public void deleteFirstByValue (int value) {
         if (head == null) return;
 
-        Node p = head;
-        Node q = null;
+        ListNode p = head;
+        ListNode q = null;
 
-        while (p.getNext() != null && p.getData() != value) {
+        while (p.getNext() != null && p.getValue() != value) {
             q = p;
             p = p.getNext();
         }
@@ -192,10 +194,10 @@ public class SinglyLinkedList {
 
         if (head == null) return;
 
-        Node p = head;
-        Node q = null;
+        ListNode p = head;
+        ListNode q = null;
         while (p != null) {
-            if (p.getData() == value) {
+            if (p.getValue() == value) {
                 if (p == head) {
                     head = head.getNext();
                     p = head;
@@ -216,9 +218,9 @@ public class SinglyLinkedList {
         if (head == null) System.out.println("linked list is null");
 
         String content = "linked list: \n";
-        Node p = head;
+        ListNode p = head;
         while (p != null) {
-            content += p.getData() + "\n";
+            content += p.getValue() + "\n";
             p = p.getNext();
         }
 
@@ -245,7 +247,7 @@ public class SinglyLinkedList {
      *
      * @param delNode
      */
-    public void deleteByNode (Node delNode) {
+    public void deleteByNode (ListNode delNode) {
         if (delNode == null || head == null) return;
 
         if (head == delNode) {
@@ -253,7 +255,7 @@ public class SinglyLinkedList {
             return;
         }
 
-        Node p = head;
+        ListNode p = head;
         while (p.getNext() != null) {
             if (p.getNext() == delNode) {
                 p.setNext(p.getNext().getNext());
@@ -270,12 +272,12 @@ public class SinglyLinkedList {
      * @param right
      * @return
      */
-    public boolean TFResult (Node left, Node right) {
-        Node l = left;
-        Node r = right;
+    public boolean TFResult (ListNode left, ListNode right) {
+        ListNode l = left;
+        ListNode r = right;
 
         while (l != null && right != null) {
-            if (l.getData() == right.getData()) {
+            if (l.getValue() == right.getValue()) {
                 l = l.getNext();
                 r = r.getNext();
                 continue;
@@ -296,11 +298,11 @@ public class SinglyLinkedList {
      * 空间复杂度O(1)
      * 时间复杂度O(n)
      */
-    public boolean hadCycle (Node head) {
+    public boolean hadCycle (ListNode head) {
         if (head == null) return false;
 
-        Node fast = head.getNext();
-        Node slow = head;
+        ListNode fast = head.getNext();
+        ListNode slow = head;
 
         /**
          * 思路很厉害，从数学上讲：
@@ -323,11 +325,11 @@ public class SinglyLinkedList {
      * @param head
      * @return
      */
-    public Node detectCycle (Node head) {
+    public ListNode detectCycle (ListNode head) {
         if (head == null || head.getNext() == null || head.getNext().getNext() == null) return null;
 
-        Node fast = head.getNext().getNext();
-        Node slow = head.getNext();
+        ListNode fast = head.getNext().getNext();
+        ListNode slow = head.getNext();
 
         //找到相遇点
         while (fast != slow) {
@@ -363,8 +365,8 @@ public class SinglyLinkedList {
             return true;
         }
 
-        Node fast = head;
-        Node slow = head;
+        ListNode fast = head;
+        ListNode slow = head;
         SinglyLinkedList list = new SinglyLinkedList();
         list.insertToHead(head);
 
@@ -374,8 +376,8 @@ public class SinglyLinkedList {
             list.insertToHead(slow);
         }
 
-        Node left = null;
-        Node right = null;
+        ListNode left = null;
+        ListNode right = null;
         if (fast.getNext() == null) {
             //整个队列节点数为奇数
             //slow是中点

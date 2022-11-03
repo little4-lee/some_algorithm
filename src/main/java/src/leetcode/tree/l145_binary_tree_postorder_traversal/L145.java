@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import leetcode.tree.TreeNode;
+import common.TreeNode;
 
 /**
  * 145. Binary Tree Postorder Traversal

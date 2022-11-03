@@ -1,7 +1,7 @@
 package leetcode.tree.l145_binary_tree_postorder_traversal;
 
-import leetcode.tree.TreeNode;
-import leetcode.tree.TreeUtils;
+import common.TreeNode;
+import common.TreeUtils;
 
 import java.util.LinkedList;
 import java.util.List;

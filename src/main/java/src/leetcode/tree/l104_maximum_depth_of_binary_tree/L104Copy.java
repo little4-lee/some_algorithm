@@ -1,7 +1,7 @@
 package leetcode.tree.l104_maximum_depth_of_binary_tree;
 
-import leetcode.tree.TreeNode;
-import leetcode.tree.TreeUtils;
+import common.TreeNode;
+import common.TreeUtils;
 
 /**
  * Maximum Depth of Binary Tree

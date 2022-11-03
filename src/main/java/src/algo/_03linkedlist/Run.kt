@@ -1,5 +1,7 @@
 package algo._03linkedlist
 
+import common.printList
+
 fun main (args: Array<String>) {
     var arr01 = intArrayOf(1, 2, 3, 4, 5)
     var arr02 = null
@@ -10,5 +12,5 @@ fun main (args: Array<String>) {
     var newList = list.reverseList(list.head)
 
 
-    SinglyLinkedList.printList(newList)
+    printList(newList)
 }

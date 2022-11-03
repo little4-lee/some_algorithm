@@ -1,7 +1,8 @@
 package leetcode.linkedlist.l21_merge_two_sorted_list
 
-import leetcode.linkedlist.ListNode
-import leetcode.linkedlist.NodeUtils
+import common.ListNode
+import common.arrayToList
+import common.printList
 
 /**
  * 21. Merge Two Sorted Lists
@@ -11,14 +12,14 @@ import leetcode.linkedlist.NodeUtils
 class L21KT {
 }
 
-fun mergeTwoLists(l1: _root_ide_package_.leetcode.linkedlist.ListNode?, l2: _root_ide_package_.leetcode.linkedlist.ListNode?): _root_ide_package_.leetcode.linkedlist.ListNode? {
-    val soldier = _root_ide_package_.leetcode.linkedlist.ListNode(1000)
+fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
+    val soldier = ListNode(1000)
     var p = soldier
     var p1 = l1
     var p2 = l2
 
     while (p1 != null && p2 != null) {
-        if (p1.`val` < p2.`val`) {
+        if (p1.value < p2.value) {
             p.next = p1
             p = p1
             p1 = p1.next
@@ -41,7 +42,7 @@ fun mergeTwoLists(l1: _root_ide_package_.leetcode.linkedlist.ListNode?, l2: _roo
 }
 
 fun main() {
-    val a1 = _root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(1, 2, 3, 4, 10, 100)
-    val a2 = _root_ide_package_.leetcode.linkedlist.NodeUtils.arrayToList(2, 2, 2, 4, 4, 101)
-    _root_ide_package_.leetcode.linkedlist.NodeUtils.printList(mergeTwoLists(a1, a2))
+    val a1 = arrayToList(1, 2, 3, 4, 10, 100)
+    val a2 = arrayToList(2, 2, 2, 4, 4, 101)
+    printList(mergeTwoLists(a1, a2))
 }

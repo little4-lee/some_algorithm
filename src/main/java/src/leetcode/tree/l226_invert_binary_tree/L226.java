@@ -2,7 +2,7 @@ package leetcode.tree.l226_invert_binary_tree;
 
 import java.util.Stack;
 
-import leetcode.tree.TreeNode;
+import common.TreeNode;
 
 /**
  * Given the root of a binary tree, invert the tree, and return its root.

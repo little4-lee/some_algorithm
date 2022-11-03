@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l92_reverse_linked_list_2;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 92. Reverse Linked List II
@@ -77,8 +79,8 @@ public class L92Copy {
 
     public static void main (String[] args) {
 //        ListNode list = NodeUtils.arrayToList(1);
-        ListNode list = NodeUtils.arrayToList(1, 2);
-        NodeUtils.printList(new L92Copy().reverseBetween(list, 2, 2));
+        ListNode list = arrayToList(1, 2);
+        printList(new L92Copy().reverseBetween(list, 2, 2));
 
 //        ListNode list = NodeUtils.arrayToList(1, 2, 3, 4, 5, 6, 7);
 //        NodeUtils.printList(new L92Copy().reverseBetween(list, 1, 7));

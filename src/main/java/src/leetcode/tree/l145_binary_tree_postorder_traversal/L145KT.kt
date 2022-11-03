@@ -1,15 +1,15 @@
 package leetcode.tree.l145_binary_tree_postorder_traversal
 
-import leetcode.tree.TreeNode
-import leetcode.tree.TreeUtils
+import common.TreeNode
+import common.TreeUtils
 import java.util.*
 
 class L145KT {
-    fun postOrderTraversal(root: _root_ide_package_.leetcode.tree.TreeNode?): List<Int> {
+    fun postOrderTraversal(root: TreeNode?): List<Int> {
         val list = mutableListOf<Int>()
-        val stack = Stack<_root_ide_package_.leetcode.tree.TreeNode>()
+        val stack = Stack<TreeNode>()
         var p = root
-        var lastVisit: _root_ide_package_.leetcode.tree.TreeNode? = null
+        var lastVisit: TreeNode? = null
 
         while (p != null || stack.isNotEmpty()) {
             while (p != null) {
@@ -31,7 +31,7 @@ class L145KT {
 }
 
 fun main() {
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
+    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
 
     //        TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
 //        TreeNode node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7);

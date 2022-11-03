@@ -1,7 +1,7 @@
 package algo._07sort
 
 import algo._03linkedlist.SinglyLinkedList
-import algo.utils.randomArr
+import common.randomArr
 import kotlin.random.Random
 
 fun main() {

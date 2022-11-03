@@ -1,20 +1,20 @@
 package leetcode.sort;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 public class HeapSort {
     public static void main (String[] args) {
-        ListNode list1 = NodeUtils.arrayToList(1, 2, 3, 4, 5, 6, 7, 8, 10);
-        ListNode list2 = NodeUtils.arrayToList(10, 22, 33, 44, 55, 66, 77, 88,99);
-        ListNode list3 = NodeUtils.arrayToList(0, 0, 0, 0, 0);
-        ListNode list4 = NodeUtils.arrayToList(100, 100, 100, 100, 100, 100, 100, 100, 100);
+        ListNode list1 = arrayToList(1, 2, 3, 4, 5, 6, 7, 8, 10);
+        ListNode list2 = arrayToList(10, 22, 33, 44, 55, 66, 77, 88,99);
+        ListNode list3 = arrayToList(0, 0, 0, 0, 0);
+        ListNode list4 = arrayToList(100, 100, 100, 100, 100, 100, 100, 100, 100);
 
         Heap heap = new Heap(list1, list2, list3, list4);
         ListNode list = heap.sort();
-        NodeUtils.printList(list);
+        printList(list);
     }
 }
 
@@ -57,9 +57,9 @@ class Heap {
     private void heaping (int index) {
         while (true) {
             int minPos = index;
-            if (index * 2 <= count && elements[index * 2].val < elements[index].val)
+            if (index * 2 <= count && elements[index * 2].value < elements[index].value)
                 minPos = index * 2;
-            if (index * 2 + 1 <= count && elements[index * 2 + 1].val < elements[minPos].val)
+            if (index * 2 + 1 <= count && elements[index * 2 + 1].value < elements[minPos].value)
                 minPos = index * 2 + 1;
             if (minPos == index) break;
             swap(elements, index, minPos);
@@ -76,7 +76,7 @@ class Heap {
 
         for (int i = 2; i < elements.length; i++) {
             int index = i;
-            while (index / 2 != 0 && elements[index].val < elements[index / 2].val) {
+            while (index / 2 != 0 && elements[index].value < elements[index / 2].value) {
                 swap(elements, index, index / 2);
                 index = index / 2;
             }

@@ -1,7 +1,7 @@
 package leetcode.tree.l111_minimum_depth_of_binary_tree
 
-import leetcode.tree.TreeNode
-import leetcode.tree.TreeUtils
+import common.TreeNode
+import common.TreeUtils
 import java.util.concurrent.LinkedBlockingQueue
 
 class L111KT {
@@ -14,10 +14,10 @@ class L111KT {
 //    }
 
     //non-recursive
-    fun minDepth(root: _root_ide_package_.leetcode.tree.TreeNode?): Int {
+    fun minDepth(root: TreeNode?): Int {
         root ?: return 0
 
-        val queue = LinkedBlockingQueue<_root_ide_package_.leetcode.tree.TreeNode>()
+        val queue = LinkedBlockingQueue<TreeNode>()
         queue.offer(root)
 
         var level = 0
@@ -49,6 +49,6 @@ class L111KT {
 }
 
 fun main() {
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
+    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
     println(L111KT().minDepth(node))
 }

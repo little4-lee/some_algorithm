@@ -1,10 +1,12 @@
 package leetcode.linkedlist.l206_reverse_linked_list;
 
+import common.ListNode;
+
 import java.util.LinkedList;
 import java.util.List;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 206. Reverse Linked List
@@ -54,14 +56,14 @@ public class L206 {
 
     public static void main (String[] args) {
         List<ListNode> nodes = new LinkedList<>();
-        nodes.add(NodeUtils.arrayToList(1, 2, 3, 4, 5));
-        nodes.add(NodeUtils.arrayToList(1));
-        nodes.add(NodeUtils.arrayToList(1,2));
-        nodes.add(NodeUtils.arrayToList());
+        nodes.add(arrayToList(1, 2, 3, 4, 5));
+        nodes.add(arrayToList(1));
+        nodes.add(arrayToList(1,2));
+        nodes.add(arrayToList());
 
         L206 l = new L206();
         for (ListNode node : nodes) {
-            NodeUtils.printList(l.reverseList(node));
+            printList(l.reverseList(node));
             System.out.println();
         }
     }

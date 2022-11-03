@@ -1,5 +1,8 @@
 package leetcode.tree;
 
+import common.TreeNode;
+import common.TreeUtils;
+
 import java.util.Stack;
 
 public class TreeTraversal {

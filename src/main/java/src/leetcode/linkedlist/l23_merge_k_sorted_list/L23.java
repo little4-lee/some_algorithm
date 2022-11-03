@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l23_merge_k_sorted_list;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printList;
 
 /**
  * 23. Merge k Sorted Lists
@@ -127,7 +129,7 @@ public class L23 {
         ListNode pB = b;
 
         while (pA != null && pB != null) {
-            if (pA.val < pB.val) {
+            if (pA.value < pB.value) {
                 p.next = pA;
                 pA = pA.next;
             } else {
@@ -149,13 +151,13 @@ public class L23 {
     }
 
     public static void main (String[] args) {
-        ListNode a1 = NodeUtils.arrayToList(1, 2, 3, 4, 5);
-        ListNode a2 = NodeUtils.arrayToList(2, 2, 2, 4, 4);
-        ListNode a3 = NodeUtils.arrayToList(5, 6);
-        ListNode a4 = NodeUtils.arrayToList(8, 8, 8);
+        ListNode a1 = arrayToList(1, 2, 3, 4, 5);
+        ListNode a2 = arrayToList(2, 2, 2, 4, 4);
+        ListNode a3 = arrayToList(5, 6);
+        ListNode a4 = arrayToList(8, 8, 8);
         ListNode[] lists = {a1, a2, a3, a4};
         //        NodeUtils.printList(new L23().mergeKLists(lists));
-        NodeUtils.printList(new L23().mergeKLists(lists));
+        printList(new L23().mergeKLists(lists));
     }
 
 

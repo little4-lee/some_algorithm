@@ -1,6 +1,6 @@
 package leetcode.linkedlist.l92_reverse_linked_list_2;
 
-import leetcode.linkedlist.ListNode;
+import common.ListNode;
 
 /**
  * 92. Reverse Linked List II

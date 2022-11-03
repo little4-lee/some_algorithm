@@ -1,14 +1,14 @@
 package leetcode.tree.l144_binary_tree_preorder_traversal
 
-import leetcode.tree.TreeNode
-import leetcode.tree.TreeUtils
+import common.TreeNode
+import common.TreeUtils
 import java.util.*
 
 class L144KT {
-    fun preorderTraversal(root: _root_ide_package_.leetcode.tree.TreeNode?): List<Int> {
+    fun preorderTraversal(root: TreeNode?): List<Int> {
         val list = mutableListOf<Int>()
         var p = root
-        val s = Stack<_root_ide_package_.leetcode.tree.TreeNode>()
+        val s = Stack<TreeNode>()
 
         while (p != null || s.isNotEmpty()) {
             while (p != null) {
@@ -29,7 +29,7 @@ fun main() {
 
 
 //        TreeNode node = TreeUtils.array2Tree(3, 6, 7, 5, 0, 2, 8, 0, 0, 0, 0, 4);
-    val node = _root_ide_package_.leetcode.tree.TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7)
+    val node = TreeUtils.array2Tree(3, 1, 5, 6, 3, 0, 7)
 
 
 //        TreeUtils.printTree(node);

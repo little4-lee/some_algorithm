@@ -1,7 +1,9 @@
 package leetcode.linkedlist.l160_intersection_of_two_linked_lists;
 
-import leetcode.linkedlist.ListNode;
-import leetcode.linkedlist.NodeUtils;
+import common.ListNode;
+
+import static common.ListUtilsKt.addTail;
+import static common.ListUtilsKt.arrayToList;
 
 /**
  * 160. Intersection of Two Linked Lists
@@ -61,14 +63,14 @@ public class L160 {
     }
 
     public static void main (String[] args) {
-        ListNode head1 = NodeUtils.arrayToList(1, 2, 3, 3, 2, 1);
-        ListNode head2 = NodeUtils.arrayToList(4, 5, 6);
-        ListNode head3 = NodeUtils.arrayToList(7, 8, 9);
+        ListNode head1 = arrayToList(1, 2, 3, 3, 2, 1);
+        ListNode head2 = arrayToList(4, 5, 6);
+        ListNode head3 = arrayToList(7, 8, 9);
 
-        NodeUtils.addTail(head1, head3);
-        NodeUtils.addTail(head2, head3);
+        addTail(head1, head3);
+        addTail(head2, head3);
 
         ListNode node = new L160().getIntersectionNode(head1, head2);
-        System.out.println(node == null ? "null" : node.val);
+        System.out.println(node == null ? "null" : node.value);
     }
 }

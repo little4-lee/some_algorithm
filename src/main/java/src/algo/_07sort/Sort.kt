@@ -1,7 +1,8 @@
 package algo._07sort
 
-import algo.utils.Node
-import algo.utils.printLinkedList
+import common.ListNode
+import common.printLinkedList
+
 
 /**
  * 冒泡排序(数组)
@@ -32,19 +33,19 @@ fun bubbleSort(arr: Array<Int?>, n: Int) {
  * - 稳定
  * - 时间复杂度：O(n^2)
  */
-fun bubbleSort(head: Node?, n: Int): Node? {
+fun bubbleSort(head: ListNode?, n: Int): ListNode? {
     if (n <= 1 || head == null) return null
 
-    var soldier = Node(-1)
+    var soldier = ListNode(-1)
     soldier.next = head
-    var pre: Node?
-    var p: Node?
+    var pre: ListNode?
+    var p: ListNode?
 
     for (i in 0 until n - 1) {
         pre = soldier
         p = soldier.next
         var flag = false
-        while (p != null && p.next != null) {
+        while (p?.next != null) {
             if (p.value > p!!.next!!.value) {
 
                 var pNext = p.next!!.next
@@ -91,7 +92,7 @@ fun insertionSort(arr: Array<Int?>, n: Int) {
 /**
  * 插入排序(链表)
  */
-fun insertionSort(head: Node?): Node? {
+fun insertionSort(head: ListNode?): ListNode? {
 
     TODO()
 }
@@ -119,6 +120,6 @@ fun selectionSort(arr: Array<Int?>, n: Int) {
 /**
  * 选择排序(链表)
  */
-fun selectionSort(head: Node?): Node? {
+fun selectionSort(head: ListNode?): ListNode? {
     TODO()
 }

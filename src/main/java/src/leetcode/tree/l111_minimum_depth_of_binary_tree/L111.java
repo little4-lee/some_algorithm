@@ -3,7 +3,7 @@ package leetcode.tree.l111_minimum_depth_of_binary_tree;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import leetcode.tree.TreeNode;
+import common.TreeNode;
 
 /**
  * Minimum Depth of Binary Tree
