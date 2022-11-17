@@ -5,7 +5,7 @@ import common.ListNode;
 import static common.ListUtilsKt.printList;
 
 public class LruCache {
-    private ListNode mSoldier = new ListNode(0);
+    private final ListNode mSoldier = new ListNode(0);
     private int mCount = 0;
 
     private static final int DEFAULT_CACHE_SIZE = 10;
