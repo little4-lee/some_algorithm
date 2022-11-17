@@ -1,4 +1,4 @@
-package linkedlist
+package leetcode.linkedlist.l234_is_palindrome
 
 import common.ListNode
 import common.arrayToList
