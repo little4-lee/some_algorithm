@@ -1,5 +1,7 @@
 package leetcode.array;
 
+import static common.ArrayUtilsKt.printArray;
+
 /**
  * 75. Sort Colors
  * https://leetcode.com/problems/sort-colors/
@@ -53,6 +55,6 @@ public class L75 {
     public static void main (String[] args) {
         int[] array = {2,2,2,1,2,1,2,0,2,1,0,0,0,2};
         new L75().sortColors(array);
-        ArrayUtils.printArray(array);
+        printArray(array);
     }
 }

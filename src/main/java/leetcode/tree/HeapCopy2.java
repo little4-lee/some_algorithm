@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import static common.ArrayUtilsKt.printArray;
+
 public class HeapCopy2 {
 
     private final int[] data;
@@ -45,7 +47,7 @@ public class HeapCopy2 {
     }
 
     public void printData () {
-        HeapUtils.printArr(data);
+        printArray(data);
     }
 
     /**

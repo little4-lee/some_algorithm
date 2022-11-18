@@ -1,12 +1,14 @@
 package leetcode.sort;
 
+import static common.ArrayUtilsKt.printArray;
+
 public class SortCollection4 {
 
     public static void main (String[] args) {
         int [] arr = {2, 4, 5, 3, 7};
         SortCollection4 collection = new SortCollection4();
         collection.sort(arr);
-        printArr(arr);
+        printArray(arr);
     }
 
     private void sort(int [] nums) {
@@ -41,11 +43,4 @@ public class SortCollection4 {
 
         return p;
     }
-
-
-    private static void printArr (int[] arr) {
-        for (int i : arr) System.out.print(i + " ");
-    }
-
-
 }

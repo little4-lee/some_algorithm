@@ -1,5 +1,7 @@
 package leetcode.sort;
 
+import static common.ArrayUtilsKt.printArray;
+
 public class SortCollection5 {
 
     public static void main (String[] args) {
@@ -7,7 +9,7 @@ public class SortCollection5 {
         int [] arr = {2, 4, 5, 9, 5, 6, 6, 8, 3, 7};
         SortCollection5 collection = new SortCollection5();
         collection.sort(arr);
-        printArr(arr);
+        printArray(arr);
     }
 
     private void sort(int [] nums) {
@@ -112,10 +114,6 @@ public class SortCollection5 {
         nums[end] = nums[p];
         nums[p] = value;
         return p;
-    }
-
-    private static void printArr (int[] arr) {
-        for (int i : arr) System.out.print(i + " ");
     }
 
     private void heapSort(int nums, int start, int end) {

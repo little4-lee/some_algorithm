@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import static common.ArrayUtilsKt.printArray;
+
 public class SortCollection7 {
 
     private static List<ISort> mSorts = new LinkedList<>();
@@ -26,11 +28,11 @@ public class SortCollection7 {
             for (int[] arr : arrs) {
                 int[] arrCopy = arr == null ? null : Arrays.copyOf(arr, arr.length);
                 System.out.println("before");
-                printArr(arrCopy);
+                printArray(arrCopy);
                 sort.sort(arrCopy);
                 System.out.println();
                 System.out.println("after");
-                printArr(arrCopy);
+                printArray(arrCopy);
                 System.out.println();
             }
             System.out.println();
@@ -212,17 +214,6 @@ public class SortCollection7 {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
-
-    private static void printArr (int[] arr) {
-        if (arr == null) {
-            System.out.println("null array");
-            return;
-        }
-        if (arr.length == 0) {
-            System.out.println("empty array");
-        }
-        for (int i : arr) System.out.print(i + " ");
     }
 }
 

@@ -212,10 +212,3 @@ fun partition(arr: Array<Int>, start: Int, end: Int): Int {
 
     return partition
 }
-
-private fun <T> printArr(arr: Array<T>) {
-    for (item in arr) {
-        print("$item  ")
-    }
-    println()
-}

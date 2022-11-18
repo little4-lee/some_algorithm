@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import static common.ArrayUtilsKt.printArr;
+import static common.ArrayUtilsKt.printArray;
 
 class SortCollection8 {
     interface ISort {
@@ -48,11 +48,11 @@ class SortCollection8 {
             for (int[] arr : arrList) {
                 int[] arrCopy = arr == null ? null : Arrays.copyOf(arr, arr.length);
                 System.out.println("before");
-                printArr(arrCopy);
+                printArray(arrCopy);
                 sort.sort(arrCopy);
                 System.out.println();
                 System.out.println("after");
-                printArr(arrCopy);
+                printArray(arrCopy);
                 System.out.println();
             }
         }

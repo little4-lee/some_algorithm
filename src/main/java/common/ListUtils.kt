@@ -54,15 +54,6 @@ fun printList(head: ListNode?) {
     }
 }
 
-fun printArray(array: Array<Int?>?) {
-    if (array == null) println("array is empty")
-
-    for (index in array!!.indices) {
-        print("[" + index + "]" + array[index] + " ")
-    }
-    println()
-}
-
 fun printLinkedList(head: ListNode?) {
     if (head == null) println("list is empty")
     var p = head
