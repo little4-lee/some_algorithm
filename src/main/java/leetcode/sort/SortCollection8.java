@@ -10,7 +10,8 @@ class SortCollection8 {
     interface ISort {
         void sort(int[] arr);
     }
-    private static class BubbleSort implements ISort{
+
+    private static class BubbleSort implements ISort {
 
         @Override
         public void sort(int[] arr) {
@@ -22,6 +23,30 @@ class SortCollection8 {
                         swap(arr, j, j + 1);
                     }
                 }
+            }
+        }
+    }
+
+    private static class InsertionSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = 1; i < arr.length; i++) {
+                //to insert value
+                int value = arr[i];
+                int insertion = i;
+                for (int j = i - 1; j >= 0; j--) {
+                    if (arr[j] > value) {
+                        //move
+                        arr[j + 1] = arr[j];
+                        insertion = j;
+                    } else {
+                        break;
+                    }
+                }
+                arr[insertion] = value;
             }
         }
     }
@@ -38,12 +63,13 @@ class SortCollection8 {
     }
 
     public static void main(String[] args) {
-        int[][] arrList = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {2, 3},{}, null};
+        int[][] arrList = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {2, 3}, {}, null};
 
         List<ISort> sorts = new LinkedList<>();
 
         sorts.add(new BubbleSort());
-        for (ISort sort: sorts) {
+        sorts.add(new InsertionSort());
+        for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
                 int[] arrCopy = arr == null ? null : Arrays.copyOf(arr, arr.length);
