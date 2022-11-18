@@ -18,7 +18,7 @@ class SortCollection8 {
             int n = arr.length;
             for (int i = n - 1; i > 0; i--) {
                 for (int j = 0; j < i; j++) {
-                    if (arr[j] < arr[j + 1]) {
+                    if (arr[j] > arr[j + 1]) {
                         swap(arr, j, j + 1);
                     }
                 }
@@ -38,7 +38,7 @@ class SortCollection8 {
     }
 
     public static void main(String[] args) {
-        int[][] arrList = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {}, null};
+        int[][] arrList = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {2, 3},{}, null};
 
         List<ISort> sorts = new LinkedList<>();
 
