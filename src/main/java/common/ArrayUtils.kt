@@ -2,7 +2,7 @@ package common
 
 fun printArray(arr: IntArray?) {
     if (arr == null) {
-        println("null array")
+        print("null array")
         return
     }
     print("[ ")

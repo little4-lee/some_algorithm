@@ -7,7 +7,7 @@ import java.util.List;
 import static common.ArrayUtilsKt.printArray;
 
 class SortCollection8 {
-    interface ISort {
+    private interface ISort {
         void sort(int[] arr);
     }
 
@@ -51,12 +51,30 @@ class SortCollection8 {
         }
     }
 
+    private static class SelectionSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            for (int i = 0; i < arr.length; i++) {
+                int selection = i;
+                int value = arr[i];
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[j] < value) {
+                        selection = j;
+                        value = arr[j];
+                    }
+                }
+                swap(arr, i, selection);
+            }
+        }
+    }
+
 
     private static void swap(int[] arr, int i, int j) {
         if (arr == null) return;
         int n = arr.length;
-        if (i < 0 || i > n || j < 0 || j > n) return;
-
+        if (i < 0 || i > n || j < 0 || j > n || i == j) return;
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
@@ -69,17 +87,17 @@ class SortCollection8 {
 
         sorts.add(new BubbleSort());
         sorts.add(new InsertionSort());
+        sorts.add(new SelectionSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
                 int[] arrCopy = arr == null ? null : Arrays.copyOf(arr, arr.length);
-                System.out.println("before");
                 printArray(arrCopy);
                 sort.sort(arrCopy);
                 System.out.println();
-                System.out.println("after");
                 printArray(arrCopy);
                 System.out.println();
+                System.out.println("---------");
             }
         }
     }
