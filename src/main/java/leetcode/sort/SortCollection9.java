@@ -50,6 +50,25 @@ class SortCollection9 {
         }
     }
 
+    private final static class SelectionSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            for (int i = 0; i < arr.length - 1; i++) {
+                int selection = i;
+                int minValue = arr[i];
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[j] < minValue) {
+                        minValue = arr[j];
+                        selection = j;
+                    }
+                }
+                swap(arr, i, selection);
+            }
+        }
+    }
+
 
     private static void swap(int[] arr, int i, int j) {
         if (arr == null) return;
@@ -67,7 +86,7 @@ class SortCollection9 {
 
         sorts.add(new BubbleSort());
         sorts.add(new InsertionSort());
-//        sorts.add(new SelectionSort());
+        sorts.add(new SelectionSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
