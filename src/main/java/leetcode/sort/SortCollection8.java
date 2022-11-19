@@ -70,6 +70,36 @@ class SortCollection8 {
         }
     }
 
+    private static class QuickSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            quickSort(arr, 0, arr.length - 1);
+        }
+
+        private void quickSort(int[] arr, int i, int j) {
+            if (i >= j) return;
+
+            int position = partition(arr, i, j);
+            quickSort(arr, i, position - 1);
+            quickSort(arr, position + 1, j);
+        }
+
+        private int partition(int[] arr, int i, int j) {
+            int value = arr[j];
+            int position = i;
+            for (int k = i; k < j; k++) {
+                if (arr[k] < value) {
+                    swap(arr, position, k);//小于value的数移动到前面
+                    position++;
+                }
+            }
+            swap(arr, position, j);
+            return position;
+        }
+    }
+
 
     private static void swap(int[] arr, int i, int j) {
         if (arr == null) return;
@@ -88,6 +118,7 @@ class SortCollection8 {
         sorts.add(new BubbleSort());
         sorts.add(new InsertionSort());
         sorts.add(new SelectionSort());
+        sorts.add(new QuickSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
