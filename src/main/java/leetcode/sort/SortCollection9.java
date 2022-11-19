@@ -28,6 +28,28 @@ class SortCollection9 {
         }
     }
 
+    private final static class InsertionSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = 1; i < arr.length; i++) {
+                int insertion = i;
+                int value = arr[i];
+                for (int j = i - 1; j >= 0; j--) {
+                    if (arr[j] > value) {
+                        insertion = j;
+                        arr[j + 1] = arr[j];
+                    } else {
+                        break;
+                    }
+                }
+                arr[insertion] = value;
+            }
+        }
+    }
+
 
     private static void swap(int[] arr, int i, int j) {
         if (arr == null) return;
@@ -44,7 +66,7 @@ class SortCollection9 {
         List<ISort> sorts = new LinkedList<>();
 
         sorts.add(new BubbleSort());
-//        sorts.add(new InsertionSort());
+        sorts.add(new InsertionSort());
 //        sorts.add(new SelectionSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
