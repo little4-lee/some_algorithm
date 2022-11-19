@@ -97,6 +97,42 @@ class SortCollection9 {
         }
     }
 
+    private final static class MergeSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            merge(arr, 0, arr.length - 1);
+        }
+
+        private void merge(int[] arr, int m, int n) {
+            if (m >= n) return;
+
+            int middle = m + (n - m) / 2;
+            merge(arr, m, middle);
+            merge(arr, middle + 1, n);
+            doMerge(arr, m, middle, n);
+        }
+
+        private void doMerge(int[] arr, int m, int middle, int n) {
+            int i = m;
+            int j = middle + 1;
+            int count = 0;
+            int[] tmp = new int[n - m + 1];
+            //merge to tmp
+            while (i <= middle && j <= n) {
+                if (arr[i] <= arr[j]) tmp[count++] = arr[i++];
+                else tmp[count++] = arr[j++];
+            }
+
+            while (i <= middle) tmp[count++] = arr[i++];
+            while (j <= n) tmp[count++] = arr[j++];
+
+            //re-copy
+            System.arraycopy(tmp, 0, arr, m, tmp.length - 1);
+        }
+    }
+
 
     private static void swap(int[] arr, int i, int j) {
         if (arr == null) return;
@@ -116,6 +152,7 @@ class SortCollection9 {
         sorts.add(new InsertionSort());
         sorts.add(new SelectionSort());
         sorts.add(new QuickSort());
+        sorts.add(new MergeSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
