@@ -87,7 +87,20 @@ public class SearchCollectionCopy2 {
     private static class FindFirstNotLessThan implements ISearch {
         @Override
         public int search(int[] arr, int target) {
+            if (arr == null) return -1;
 
+            int lo = 0;
+            int hi = arr.length - 1;
+
+            while (lo <= hi) {
+                int middle = lo + ((hi - lo) >> 1);
+                if (arr[middle] >= target) {
+                    if (middle == 0 || arr[middle - 1] < target) return middle;
+                    else hi = middle - 1;
+                } else {
+                    lo = middle + 1;
+                }
+            }
             return -1;
         }
     }
