@@ -61,7 +61,22 @@ public class SearchCollectionCopy2 {
     private static class FindLast implements ISearch {
         @Override
         public int search(int[] arr, int target) {
+            if (arr == null) return -1;
 
+            int lo = 0;
+            int hi = arr.length - 1;
+            while (lo <= hi) {
+                int middle = lo + ((hi - lo) >> 1);
+                if (arr[middle] > target) {
+                    hi = middle - 1;
+                } else if(arr[middle] < target) {
+                    lo = middle + 1;
+                } else {
+                    //equals
+                    if (middle == arr.length - 1 || arr[middle + 1] != target) return middle;
+                    else lo = middle + 1;
+                }
+            }
             return -1;
         }
     }
