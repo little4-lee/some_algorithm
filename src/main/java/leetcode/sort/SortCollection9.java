@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 class SortCollection9 {
     private interface ISort {
@@ -131,16 +132,6 @@ class SortCollection9 {
             //re-copy
             System.arraycopy(tmp, 0, arr, m, tmp.length - 1);
         }
-    }
-
-
-    private static void swap(int[] arr, int i, int j) {
-        if (arr == null) return;
-        int n = arr.length;
-        if (i < 0 || i > n || j < 0 || j > n || i == j) return;
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package leetcode.tree;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 public class HeapCopy3 {
 
@@ -35,12 +36,6 @@ public class HeapCopy3 {
             swap(data, maxPos, i);
             i = maxPos;
         }
-    }
-
-    private void swap (int[] data, int i, int j) {
-        int temp = data[i];
-        data[i] = data[j];
-        data[j] = temp;
     }
 
     private void buildHeap (int[] data) {

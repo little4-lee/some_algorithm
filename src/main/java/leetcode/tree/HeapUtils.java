@@ -1,6 +1,7 @@
 package leetcode.tree;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 public class HeapUtils {
     public static void heapSort (int[] nums) {
@@ -47,12 +48,6 @@ public class HeapUtils {
             swap(nums, maxPos, i);
             i = maxPos;
         }
-    }
-
-    private static void swap (int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 
     /**

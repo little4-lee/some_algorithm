@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 public class SortCollection7 {
 
@@ -208,12 +209,6 @@ public class SortCollection7 {
                 i = minPos;
             }
         }
-    }
-
-    private static void swap (int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 }
 

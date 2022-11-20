@@ -2,6 +2,7 @@ package leetcode.linkedlist.l23_merge_k_sorted_list;
 
 import common.ListNode;
 
+import static common.ArrayUtilsKt.swap;
 import static common.ListUtilsKt.arrayToList;
 import static common.ListUtilsKt.printList;
 
@@ -86,12 +87,6 @@ public class L23HeapSort {
             swap(nodes, i, minPos);
             i = minPos;
         }
-    }
-
-    private void swap (Object[] arr, int i, int j) {
-        Object temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 
 

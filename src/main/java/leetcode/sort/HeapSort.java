@@ -2,6 +2,7 @@ package leetcode.sort;
 
 import common.ListNode;
 
+import static common.ArrayUtilsKt.swap;
 import static common.ListUtilsKt.arrayToList;
 import static common.ListUtilsKt.printList;
 
@@ -82,11 +83,5 @@ class Heap {
             }
         }
         count = args.length;
-    }
-
-    private void swap (ListNode[] elements, int i, int j) {
-        ListNode temp = elements[i];
-        elements[i] = elements[j];
-        elements[j] = temp;
     }
 }

@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import static common.ArrayUtilsKt.swap;
+
 public class HeapCopy {
 
     private void heapSort (int[] nums) {
@@ -34,11 +36,5 @@ public class HeapCopy {
             k--;
             heaping(heap, k, 1);
         }
-    }
-
-    private void swap (int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
