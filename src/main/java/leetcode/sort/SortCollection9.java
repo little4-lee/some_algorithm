@@ -8,10 +8,6 @@ import static common.ArrayUtilsKt.printArray;
 import static common.ArrayUtilsKt.swap;
 
 class SortCollection9 {
-    private interface ISort {
-        void sort(int[] arr);
-    }
-
     private final static class BubbleSort implements ISort {
 
         @Override

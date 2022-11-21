@@ -211,8 +211,3 @@ public class SortCollection7 {
         }
     }
 }
-
-
-interface ISort {
-    void sort (int[] arr);
-}

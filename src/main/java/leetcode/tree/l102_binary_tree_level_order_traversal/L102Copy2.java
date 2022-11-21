@@ -57,12 +57,12 @@ public class L102Copy2 {
 
     public static void main (String[] args) {
         TreeNode node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6);
-        TreeNode node1 = TreeUtils.array2Tree(null);
+//        TreeNode node1 = TreeUtils.array2Tree(null);
         TreeNode node2 = TreeUtils.array2Tree(1);
         TreeNode node3 = TreeUtils.array2Tree();
         L102Copy2 l = new L102Copy2();
         printList(l.levelOrder(node));
-        printList(l.levelOrder(node1));
+//        printList(l.levelOrder(node1));
         printList(l.levelOrder(node2));
         printList(l.levelOrder(node3));
     }
