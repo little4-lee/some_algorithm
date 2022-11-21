@@ -3,10 +3,6 @@ package leetcode.search.binary_search;
 import static common.ArrayUtilsKt.printArray;
 
 public class SearchCollectionCopy2 {
-    private interface ISearch {
-        int search(int[] arr, int target);
-    }
-
     /**
      * just find target, ignore repeat
      */
