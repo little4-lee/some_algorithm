@@ -1,11 +1,11 @@
 package leetcode.tree.l145_binary_tree_postorder_traversal;
 
+import common.TreeNode;
+import common.TreeUtils;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
-
-import common.TreeNode;
-import common.TreeUtils;
 
 /**
  * 145. Binary Tree Postorder Traversal
@@ -24,27 +24,31 @@ import common.TreeUtils;
  */
 public class L145Copy {
     public List<Integer> postOrderTraversal (TreeNode root) {
+        if (root == null) return null;
+
         List<Integer> list = new LinkedList<>();
         TreeNode p = root;
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode lastVisit = null;
-        Stack<TreeNode> s = new Stack<>();
 
-        while (p != null || !s.isEmpty()) {
+        while (p != null || !stack.isEmpty()) {
             while (p != null) {
-                s.push(p);
+                stack.push(p);
                 p = p.left;
             }
-            p = s.peek();
 
-            if (p.right == null || p.right == lastVisit) {
-                s.pop();
-                list.add(p.val);
-                lastVisit = p;
-                p = null;
-            } else {
-                p = p.right;
+            if (!stack.isEmpty()) {
+                TreeNode node = stack.peek();
+                if (node.right == null || node.right == lastVisit) {
+                    lastVisit = node;
+                    list.add(node.val);
+                    stack.pop();
+                } else {
+                    p = node.right;
+                }
             }
         }
+
         return list;
     }
 
