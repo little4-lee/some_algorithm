@@ -116,20 +116,22 @@ class SortCollection11 {
         /**
          * 建堆
          * 从第一个非叶子节点开始
+         *
          * @param nums
          * @param n
          */
         private void buildHeap(int[] nums, int n) {
-            for (int i = (n - 1) / 2; i >= 0 ; i--) {
+            for (int i = (n - 1) / 2; i >= 0; i--) {
                 heaping(nums, n, i);
             }
         }
 
         /**
          * 堆化
+         *
          * @param nums
-         * @param n 截止节点
-         * @param i 开始节点
+         * @param n    截止节点
+         * @param i    开始节点
          */
         private void heaping(int[] nums, int n, int i) {
             while (true) {
@@ -145,7 +147,7 @@ class SortCollection11 {
         }
     }
 
-    public static void main(String[] args) {
+    public static void test() {
         int[][] arrList = {{2, 4, 5, 9, 5, 6, 6, 8, 3, 7}, {1}, {3, 2}, {2, 3}, {}, null};
 
         List<ISort> sorts = new LinkedList<>();
@@ -167,5 +169,9 @@ class SortCollection11 {
                 System.out.println("---------");
             }
         }
+    }
+
+    public static void main(String[] args) {
+        test();
     }
 }
