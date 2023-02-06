@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 class SortCollection14 {
 
@@ -43,6 +44,16 @@ class SortCollection14 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                //选择 0..i 之间的最大值，放到 i 的位置
+                int maxPos = i;
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[maxPos]) maxPos = j;
+                }
+                swap(arr, i, maxPos);
+            }
         }
     }
 
