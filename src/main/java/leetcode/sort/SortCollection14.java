@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
 
 class SortCollection14 {
 
@@ -43,14 +44,56 @@ class SortCollection14 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                //选择 0..i 之间的最大值，放到 i 的位置
+                int maxPos = i;
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[maxPos]) maxPos = j;
+                }
+                swap(arr, i, maxPos);
+            }
         }
     }
 
     private final static class QuickSort implements ISort {
         @Override
         public void sort(int[] arr) {
-
+            if (arr == null) return;
+            quickSort(arr, 0, arr.length - 1);
         }
+
+        private void quickSort(int[] arr, int m, int n) {
+            if (m >= n) return;
+            int partition = partition(arr, m, n);
+            quickSort(arr, m, partition - 1);
+            quickSort(arr, partition + 1, n);
+        }
+
+        /**
+         * 分区函数
+         * 找到arr[n] 的最终位置
+         * 左边都小于该值
+         * 右边都大于等于该值
+         * @param arr
+         * @param m
+         * @param n
+         * @return
+         */
+        private int partition(int[] arr, int m, int n) {
+            int value = arr[n];
+            int position = m;
+            for (int i = m; i < n; i++) {
+                if (arr[i] < value) {
+                    swap(arr, i, position);
+                    position++;
+                }
+            }
+            swap(arr, n, position);
+            return position;
+        }
+
     }
 
     private final static class HeapSort implements ISort {

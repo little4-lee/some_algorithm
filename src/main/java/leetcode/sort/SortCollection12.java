@@ -53,13 +53,60 @@ class SortCollection12 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                //寻找 0 .. i 的最大值，放到i的位置
+                int maxPos = i;
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[maxPos]) maxPos = j;
+                }
+                swap(arr, maxPos, i);
+            }
         }
     }
 
     private final static class QuickSort implements ISort {
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            quickSort(arr, 0, arr.length - 1);
         }
+
+        private void quickSort(int[] arr, int m, int n) {
+            if (m >= n) return;
+
+            int partition = partition(arr, m, n);
+            quickSort(arr, m, partition - 1);
+            quickSort(arr, partition + 1, n);
+        }
+
+        /**
+         * 分区函数：
+         * 找到下标为 n 的元素排好序时所在的位置partition
+         * 此时，
+         * partition左侧的都小于arr[n]
+         * partition右侧的都大于等于arr[n]
+         * @param arr
+         * @param m
+         * @param n
+         * @return
+         */
+        private int partition(int[] arr, int m, int n) {
+            int value = arr[n];
+            int partition = m;
+            for (int i = m; i < n; i++) {
+                if (arr[i] < value) {
+                    swap(arr, i, partition);
+                    partition++;
+                }
+            }
+            swap(arr, partition, n);
+            return partition;
+        }
+
+
     }
 
     private final static class HeapSort implements ISort {
