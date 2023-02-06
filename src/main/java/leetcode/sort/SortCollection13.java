@@ -28,6 +28,24 @@ class SortCollection13 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = 1; i < arr.length - 1; i++) {
+                // 0 .. i-1 为有序数组
+                // 将i 插入 0 .. i 之间
+                // 插入位置
+                int insertion = i;
+                int value = arr[i];
+                for (int j = i - 1; j >= 0; j--) {
+                    if (arr[j] > value) {
+                        insertion = j;
+                        arr[j + 1] = arr[j];
+                    } else {
+                        break;
+                    }
+                }
+                arr[insertion] = value;
+            }
         }
     }
 
