@@ -53,6 +53,16 @@ class SortCollection13 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                // 选择 0..i 之间最大值，放到 i 的位置
+                int max = i;
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[max]) max = j;
+                }
+                swap(arr, i, max);
+            }
         }
     }
 
