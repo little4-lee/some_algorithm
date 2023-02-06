@@ -60,8 +60,40 @@ class SortCollection14 {
     private final static class QuickSort implements ISort {
         @Override
         public void sort(int[] arr) {
-
+            if (arr == null) return;
+            quickSort(arr, 0, arr.length - 1);
         }
+
+        private void quickSort(int[] arr, int m, int n) {
+            if (m >= n) return;
+            int partition = partition(arr, m, n);
+            quickSort(arr, m, partition - 1);
+            quickSort(arr, partition + 1, n);
+        }
+
+        /**
+         * 分区函数
+         * 找到arr[n] 的最终位置
+         * 左边都小于该值
+         * 右边都大于等于该值
+         * @param arr
+         * @param m
+         * @param n
+         * @return
+         */
+        private int partition(int[] arr, int m, int n) {
+            int value = arr[n];
+            int position = m;
+            for (int i = m; i < n; i++) {
+                if (arr[i] < value) {
+                    swap(arr, i, position);
+                    position++;
+                }
+            }
+            swap(arr, n, position);
+            return position;
+        }
+
     }
 
     private final static class HeapSort implements ISort {
