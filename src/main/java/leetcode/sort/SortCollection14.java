@@ -5,23 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static common.ArrayUtilsKt.printArray;
-import static common.ArrayUtilsKt.swap;
 
-class SortCollection13 {
+class SortCollection14 {
 
     private final static class BubbleSort implements ISort {
 
         @Override
-        public void sort(int[] arr) {
-            if (arr == null) return;
-
-            for (int i = arr.length - 1; i > 0; i--) {
-                //找到待排序元素中的最大值，放到 i 的位置
-                for (int j = 0; j < i; j++) {
-                    if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
-                }
-            }
-        }
+        public void sort(int[] arr) {}
     }
 
     private final static class InsertionSort implements ISort {
@@ -30,9 +20,9 @@ class SortCollection13 {
         public void sort(int[] arr) {
             if (arr == null) return;
 
-            for (int i = 1; i < arr.length - 1; i++) {
-                // 0 .. i-1 为有序数组
-                // 将i 插入 0 .. i 之间
+            for (int i = 1; i < arr.length; i++) {
+                // 0 .. i-1 有序
+                // 将i插入到 0 .. i 之间
                 // 插入位置
                 int insertion = i;
                 int value = arr[i];
@@ -67,52 +57,7 @@ class SortCollection13 {
 
         @Override
         public void sort(int[] arr) {
-            if (arr == null || arr.length <= 1) return;
 
-            //build heap
-            buildHeap(arr);
-
-            //sort
-            //k: last element index of heap
-            int k = arr.length - 1;
-            while (k > 0) {
-                swap(arr, 0, k);
-                k--;
-                heaping(arr, 0, k);
-            }
-        }
-
-        /**
-         * 建堆
-         * 从 第一个 非叶子节点 到 根节点
-         *
-         * @param arr
-         */
-        private void buildHeap(int[] arr) {
-            int start = (arr.length - 2) / 2;
-            for (int i = start; i >= 0; i--) {
-                heaping(arr, i, arr.length - 1);
-            }
-        }
-
-        /**
-         * 堆化
-         *
-         * @param arr
-         * @param i   开始位置
-         * @param n   结束边界
-         */
-        private void heaping(int[] arr, int i, int n) {
-            while (true) {
-                int maxPos = i;
-                int l = 2 * i + 1;
-                int r = 2 * i + 2;
-                if (l <= n && arr[l] > arr[maxPos]) maxPos = l;
-                if (r <= n && arr[r] > arr[maxPos]) maxPos = r;
-                if (maxPos == i) break;
-                swap(arr, i, maxPos);
-                i = maxPos;
-            }
         }
     }
 
