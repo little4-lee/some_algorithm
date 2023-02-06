@@ -2,7 +2,8 @@ package leetcode.linkedlist.l2_add_two_numbers;
 
 import common.ListNode;
 
-import static common.ListUtilsKt.*;
+import static common.ListUtilsKt.arrayToList;
+import static common.ListUtilsKt.printListInLine;
 
 /**
  * 2. Add Two Numbers
@@ -20,70 +21,67 @@ import static common.ListUtilsKt.*;
  * Output: 7 -> 0 -> 8
  * Explanation: 342 + 465 = 807.
  */
-public class L2 {
+public class L2Copy2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
-        ListNode soldier = new ListNode(0);
-        ListNode p = soldier;
+        ListNode solder = new ListNode(0);
+        ListNode p = solder;
 
         ListNode p1 = l1;
         ListNode p2 = l2;
-
         boolean up = false;
-
+        //add process
         while (p1 != null && p2 != null) {
-            int val = p1.value + p2.value + (up ? 1 : 0);
-
-            //进位
-            if (val >= 10) {
+            int value = p1.value + p2.value + (up ? 1 : 0);
+            if (value >= 10) {
                 up = true;
-                val %= 10;
+                value %= 10;
             } else {
                 up = false;
             }
-
-            ListNode node = new ListNode(val);
-
-            p.next = node;
-            p = node;
+            p.next = new ListNode(value);
+            p = p.next;
 
             p1 = p1.next;
             p2 = p2.next;
         }
 
-        if (p1 != null) p.next = p1;
-        if (p2 != null) p.next = p2;
+        if (p1 == null) p.next = p2;
+        if (p2 == null) p.next = p1;
 
-        //没有进位
-        if (!up) return soldier.next;
+        //no up
+        if (!up) return solder.next;
 
-        //存在进位
+        //up process
         ListNode pre = p;
-        ListNode pEnd = p.next;
+        ListNode next = p.next;
         while (true) {
-            if (pEnd == null) {
-                //(增加了一位)总位数+1
+            if (next == null) {
                 pre.next = new ListNode(1);
                 break;
             }
 
-            if (pEnd.value != 9) {
-                pEnd.value += 1;
+            if (next.value != 9) {
+                next.value += 1;
                 break;
             }
 
-            //pEnd.val == 9
-            pEnd.value = 0;
-            pre = pEnd;
-            pEnd = pEnd.next;
+            //up
+            next.value = 0;
+            pre = next;
+            next = next.next;
         }
 
-        return soldier.next;
+        return solder.next;
     }
 
-    public static void main(String[] args) {
+    public static void test() {
+        L2Copy2 l = new L2Copy2();
+        printListInLine(l.addTwoNumbers(null, null));
+        System.out.println();
 
-        L2 l = new L2();
+        printListInLine(l.addTwoNumbers(null, arrayToList(5, 6, 4)));
+        System.out.println();
+
         printListInLine(l.addTwoNumbers(arrayToList(2, 4, 3), arrayToList(5, 6, 4)));
         System.out.println();
 
@@ -100,5 +98,10 @@ public class L2 {
         System.out.println();
 
         printListInLine(l.addTwoNumbers(arrayToList(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), arrayToList(5, 6, 4)));
+
+    }
+
+    public static void main(String[] args) {
+        test();
     }
 }

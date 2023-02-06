@@ -54,6 +54,15 @@ fun printList(head: ListNode?) {
     }
 }
 
+fun printListInLine(head: ListNode?) {
+    if (head == null) println("empty list")
+    var p = head
+    while (p != null) {
+        print("${p.value} ")
+        p = p.next
+    }
+}
+
 fun printLinkedList(head: ListNode?) {
     if (head == null) println("list is empty")
     var p = head
