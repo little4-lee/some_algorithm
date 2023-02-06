@@ -13,6 +13,14 @@ class SortCollection13 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                //找到待排序元素中的最大值，放到 i 的位置
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
+                }
+            }
         }
     }
 
@@ -59,6 +67,7 @@ class SortCollection13 {
         /**
          * 建堆
          * 从 第一个 非叶子节点 到 根节点
+         *
          * @param arr
          */
         private void buildHeap(int[] arr) {
@@ -70,9 +79,10 @@ class SortCollection13 {
 
         /**
          * 堆化
+         *
          * @param arr
-         * @param i 开始位置
-         * @param n 结束边界
+         * @param i   开始位置
+         * @param n   结束边界
          */
         private void heaping(int[] arr, int i, int n) {
             while (true) {

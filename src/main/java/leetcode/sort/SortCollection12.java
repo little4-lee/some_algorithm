@@ -13,6 +13,14 @@ class SortCollection12 {
 
         @Override
         public void sort(int[] arr) {
+            if (arr == null || arr.length <= 1) return;
+
+            for (int i = arr.length - 1; i > 0; i--) {
+                //找到 i 位置的值
+                for (int j = 0; j < i; j++) {
+                    if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
+                }
+            }
         }
     }
 
@@ -55,6 +63,7 @@ class SortCollection12 {
          * 建堆
          * 从{s}到 0 向下堆化
          * {s}: (arr.length - 2) / 2 第一个非叶子节点
+         *
          * @param arr
          */
         private void buildHeap(int[] arr) {
@@ -66,9 +75,10 @@ class SortCollection12 {
         /**
          * 堆化
          * 从 i 到 n
+         *
          * @param arr
-         * @param i 开始位置
-         * @param n 结束位置
+         * @param i   开始位置
+         * @param n   结束位置
          */
         private void heaping(int[] arr, int i, int n) {
             while (true) {
