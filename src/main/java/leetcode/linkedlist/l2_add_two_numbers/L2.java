@@ -2,8 +2,7 @@ package leetcode.linkedlist.l2_add_two_numbers;
 
 import common.ListNode;
 
-import static common.ListUtilsKt.arrayToList;
-import static common.ListUtilsKt.printList;
+import static common.ListUtilsKt.*;
 
 /**
  * 2. Add Two Numbers
@@ -22,10 +21,10 @@ import static common.ListUtilsKt.printList;
  * Explanation: 342 + 465 = 807.
  */
 public class L2 {
-    public ListNode addTwoNumbers (ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         ListNode soldier = new ListNode(0);
-        ListNode p = null;
+        ListNode p = soldier;
 
         ListNode p1 = l1;
         ListNode p2 = l2;
@@ -45,9 +44,7 @@ public class L2 {
 
             ListNode node = new ListNode(val);
 
-            if (soldier.next == null) soldier.next = node;
-            else p.next = node;
-
+            p.next = node;
             p = node;
 
             p1 = p1.next;
@@ -84,19 +81,24 @@ public class L2 {
         return soldier.next;
     }
 
-    public static void main (String[] args) {
-        //                ListNode list1 = NodeUtils.arrayToList(2, 4, 3);
-        //                ListNode list2 = NodeUtils.arrayToList(5, 6, 4);
-//        ListNode list1 = NodeUtils.arrayToList(9);
-//        ListNode list2 = NodeUtils.arrayToList(1, 9, 9, 9, 9, 9, 9, 9, 9, 9);
-//        ListNode list1 = NodeUtils.arrayToList(9);
-//        ListNode list2 = NodeUtils.arrayToList(1, 9, 9);
-                ListNode list1 = arrayToList(5);
-                ListNode list2 = arrayToList(5);
-//                ListNode list1 = NodeUtils.arrayToList(0);
-//                ListNode list2 = NodeUtils.arrayToList(0);
-//                ListNode list1 = NodeUtils.arrayToList(1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1);
-//                ListNode list2 = NodeUtils.arrayToList(5,6,4);
-        printList(new L2().addTwoNumbers(list1, list2));
+    public static void main(String[] args) {
+
+        L2 l = new L2();
+        printListInLine(l.addTwoNumbers(arrayToList(2, 4, 3), arrayToList(5, 6, 4)));
+        System.out.println();
+
+        printListInLine(l.addTwoNumbers(arrayToList(9), arrayToList(1, 9, 9, 9, 9, 9, 9, 9, 9, 9)));
+        System.out.println();
+
+        printListInLine(l.addTwoNumbers(arrayToList(9), arrayToList(1, 9, 9)));
+        System.out.println();
+
+        printListInLine(l.addTwoNumbers(arrayToList(5), arrayToList(5)));
+        System.out.println();
+
+        printListInLine(l.addTwoNumbers(arrayToList(0), arrayToList(0)));
+        System.out.println();
+
+        printListInLine(l.addTwoNumbers(arrayToList(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), arrayToList(5, 6, 4)));
     }
 }
