@@ -99,6 +99,44 @@ class SortCollection13 {
         }
     }
 
+    private final static class MergeSort implements ISort {
+
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            mergeSort(arr, 0, arr.length - 1);
+        }
+
+        private void mergeSort(int[] arr, int m, int n) {
+            if (m >= n) return;
+
+            int middle = m + (n - m) / 2;
+            mergeSort(arr, m, middle);
+            mergeSort(arr, middle + 1, n);
+
+            merge(arr, m, middle, n);
+        }
+
+        private void merge(int[] arr, int m, int middle, int n) {
+            int[] copy = new int[n - m + 1];
+
+            int l = m;
+            int r = middle + 1;
+            int count = 0;
+
+            //merge
+            while (l <= middle && r <= n) {
+                if (arr[l] < arr[r]) copy[count++] = arr[l++];
+                else copy[count++] = arr[r++];
+            }
+
+            while (l <= middle) copy[count++] = arr[l++];
+            while (r <= n) copy[count++] = arr[r++];
+            //copy back
+            System.arraycopy(copy, 0, arr, m, copy.length);
+        }
+    }
+
     private final static class HeapSort implements ISort {
 
         @Override
@@ -163,6 +201,7 @@ class SortCollection13 {
         sorts.add(new SelectionSort());
         sorts.add(new QuickSort());
         sorts.add(new HeapSort());
+        sorts.add(new MergeSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {

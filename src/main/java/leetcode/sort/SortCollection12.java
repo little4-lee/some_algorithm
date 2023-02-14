@@ -109,6 +109,43 @@ class SortCollection12 {
 
     }
 
+    private final static class MergeSort implements ISort {
+        @Override
+        public void sort(int[] arr) {
+            if (arr == null) return;
+            mergeSort(arr, 0, arr.length - 1);
+        }
+
+        private void mergeSort(int[] arr, int m, int n) {
+            if (m >= n) return;
+            int middle = m + (n - m) / 2;
+            mergeSort(arr, m, middle);
+            mergeSort(arr, middle + 1, n);
+
+            doMerge(arr, m, middle, n);
+        }
+
+        private void doMerge(int[] arr, int m, int middle, int n) {
+            //m .. middle 有序，middle + 1 .. n 有序
+            //合并两个有序数组
+            int[] temp = new int[n - m + 1];
+            int left = m;
+            int right = middle + 1;
+            int count = 0;
+            //merge
+            while (left <= middle && right <= n) {
+                if (arr[left] < arr[right]) temp[count++] = arr[left++];
+                else temp[count++] = arr[right++];
+            }
+
+            while (left <= middle) temp[count++] = arr[left++];
+            while (right <= n) temp[count++] = arr[right++];
+
+            //copy back
+            System.arraycopy(temp, 0, arr, m, temp.length);
+        }
+    }
+
     private final static class HeapSort implements ISort {
 
         @Override
@@ -169,6 +206,7 @@ class SortCollection12 {
         sorts.add(new SelectionSort());
         sorts.add(new QuickSort());
         sorts.add(new HeapSort());
+        sorts.add(new MergeSort());
         for (ISort sort : sorts) {
             System.out.println(sort.getClass().getSimpleName() + " ==> ");
             for (int[] arr : arrList) {
