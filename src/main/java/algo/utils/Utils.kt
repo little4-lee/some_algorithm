@@ -39,7 +39,7 @@ import kotlin.random.Random
 //}
 
 fun <T> printLevelList(list: List<List<T?>?>?) {
-    if (list == null) {
+    list ?: run {
         println("list is empty")
         return
     }
@@ -51,4 +51,13 @@ fun <T> printLevelList(list: List<List<T?>?>?) {
             println("$index level, items: ${list.joinToString(", ")}")
         }
     }
+}
+
+fun <T> printList(list: List<T?>?) {
+    list ?: run {
+        println("list is null")
+        return
+    }
+
+    println("items: ${list.joinToString(", ")}")
 }
