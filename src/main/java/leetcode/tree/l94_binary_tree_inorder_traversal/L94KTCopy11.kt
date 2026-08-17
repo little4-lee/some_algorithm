@@ -1,24 +1,29 @@
 package tree
 
+import com.sun.source.tree.Tree
 import common.TreeNode
 import common.TreeUtils
+import common.arrayToList
 import java.util.*
 
-fun inorderTraversalCopy(root: TreeNode?):  List<Int> {
+private fun inorderTraversal(root: TreeNode?):  List<Int> {
     val list = mutableListOf<Int>()
-    var p = root
     val stack = Stack<TreeNode>()
+    var cur = root
 
-    while (p != null || stack.isNotEmpty()) {
-        while (p != null) {
-            stack.push(p)
-            p = p.left
+    while (cur != null || stack.isNotEmpty()) {
+        // 找到最左边的节点
+        while (cur != null) {
+            stack.push(cur)
+            cur = cur.left
         }
-
+        // 每一个没有左节点的根节点，插入队列
         if (stack.isNotEmpty()) {
-            p = stack.pop()
-            list.add(p.`val`)
-            p = p.right
+            val temp = stack.pop()
+            list.add(temp.`val`)
+            if (temp.right != null) {
+                cur = temp.right
+            }
         }
     }
 
@@ -33,6 +38,6 @@ fun main() {
 
 
 //        TreeUtils.printTree(node);
-    val list = inorderTraversalCopy(node)
+    val list = inorderTraversal(node)
     for (i in list) print("$i ")
 }

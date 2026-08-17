@@ -4,7 +4,7 @@ import common.TreeNode
 import common.TreeUtils
 import java.util.*
 
-fun inorderTraversal(root: TreeNode?):  List<Int> {
+private fun inorderTraversal(root: TreeNode?):  List<Int> {
     val list = mutableListOf<Int>()
     var p = root
     val stack = Stack<TreeNode>()
