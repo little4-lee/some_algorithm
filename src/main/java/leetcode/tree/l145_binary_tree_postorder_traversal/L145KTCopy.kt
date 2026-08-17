@@ -1,5 +1,6 @@
 package leetcode.tree.l145_binary_tree_postorder_traversal
 
+import algo.utils.printList
 import common.TreeNode
 import common.TreeUtils
 import java.util.*
@@ -47,5 +48,5 @@ fun main() {
 
     //        TreeUtils.printTree(node);
     val list = L145KTCopy().postOrderTraversal(node)
-    for (i in list) print("$i ")
+    printList(list)
 }
