@@ -2,46 +2,64 @@ package leetcode.tree.l111_minimum_depth_of_binary_tree
 
 import common.TreeNode
 import common.TreeUtils
-import java.util.concurrent.LinkedBlockingQueue
+import kotlin.math.min
 
-class L111KTCopy {
+class L111KTCopy1 {
 
-
-    //non-recursive
+    // recursive
     fun minDepth(root: TreeNode?): Int {
         root ?: return 0
+        // 根部判断条件
+        val minLeft = minDepth(root.left)
+        val minRight = minDepth(root.right)
 
-        val queue = LinkedBlockingQueue<TreeNode>()
-        queue.offer(root)
-
-        var isStop = false
-        var cur: Int
-        var count: Int
-        var level = 0
-
-        while (queue.isNotEmpty() && !isStop) {
-            cur = 0
-            count = queue.size
-            level++
-
-            while (cur < count) {
-                cur++
-                val p = queue.poll()
-                if (p.left == null && p.right == null) {
-                    isStop = true
-                    break
-                }
-
-                if (p.left != null) queue.offer(p.left)
-                if (p.right != null) queue.offer(p.right)
-            }
+        return if (minLeft == 0 || minRight == 0) {
+            // 某侧深度为0，需要使用另一侧的深度
+            minLeft + minRight + 1
+        } else {
+            min(minLeft, minRight) + 1
         }
-        return level
     }
+
+    //non-recursive
+//    fun minDepth(root: TreeNode?): Int {
+//        root ?: return 0
+//
+//        var level = 0
+//        // 最小深度逻辑：第一个没有左右子树的节点
+//        var findMinDepth = false
+//
+//        val queue = LinkedList<TreeNode>()
+//        queue.offer(root)
+//
+//        while (queue.isNotEmpty() && !findMinDepth) {
+//            level++
+//
+//            val levelSize = queue.size
+//            var index = 0
+//            while (index < levelSize) {
+//                index++
+//                val tempNode = queue.poll()
+//                if (tempNode.left == null && tempNode.right == null) {
+//                    findMinDepth = true
+//                    break
+//                }
+//                if (tempNode.left != null) {
+//                    queue.offer(tempNode.left)
+//                }
+//                if (tempNode.right != null) {
+//                    queue.offer(tempNode.right)
+//                }
+//            }
+//        }
+//
+//        return level
+//    }
 }
 
 fun main() {
-    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
-//    val node = TreeUtils.array2Tree(null)
-    println(L111KTCopy().minDepth(node))
+    println(L111KTCopy1().minDepth(TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)))
+    println(L111KTCopy1().minDepth(TreeUtils.array2Tree(3, 2, 7)))
+    println(L111KTCopy1().minDepth(TreeUtils.array2Tree(null, null, null, null)))
+    println(L111KTCopy1().minDepth(null))
 }
