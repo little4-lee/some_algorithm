@@ -1,5 +1,6 @@
 package leetcode.tree.l102_binary_tree_level_order_traversal
 
+import algo.utils.printLevelList
 import common.TreeNode
 import common.TreeUtils
 import java.util.LinkedList
@@ -37,11 +38,7 @@ class L102KTCopy11 {
 }
 
 fun main() {
-    val node = TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)
-    val list = L102KTCopy11().levelOrder(node)
-    for (l in list.orEmpty()) {
-        for (i in l)
-            print("$i ")
-        println()
-    }
+    printLevelList(L102KTCopy11().levelOrder(TreeUtils.array2Tree(3, 2, 7, 4, null, 5, 6)))
+    printLevelList(L102KTCopy11().levelOrder(TreeUtils.array2Tree(null, null, null, null)))
+    printLevelList(L102KTCopy11().levelOrder(null))
 }
