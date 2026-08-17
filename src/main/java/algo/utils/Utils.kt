@@ -1,6 +1,7 @@
 package algo.utils
 
 import common.ListNode
+import javax.swing.plaf.ListUI
 import kotlin.random.Random
 
 //fun printArray(array: Array<Int?>?) {
@@ -36,3 +37,22 @@ import kotlin.random.Random
 //
 //    return array
 //}
+
+fun printLevelList(list: List<List<Any?>?>?) {
+    if (list == null) {
+        println("list is empty")
+        return
+    }
+
+    list.forEachIndexed { index, list ->
+        if (list == null) {
+            println("$index level list is null")
+        } else {
+            list.flatMap {
+                "$it "
+            }
+        }
+    }
+
+
+}
