@@ -1,10 +1,10 @@
 package leetcode.tree.l107_binary_tree_level_order_traversal_2;
 
-import java.util.Collections;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import common.TreeNode;
 import common.TreeUtils;
@@ -30,54 +30,29 @@ import common.TreeUtils;
  * ]
  */
 public class L107 {
-    //recursive
-//    public List<List<Integer>> levelOrderBottom(TreeNode root) {
-//        List<List<Integer>> list = new LinkedList<>();
-//        levelOrderBottomInternal(root, 0, list);
-//        Collections.reverse(list);
-//        return list;
-//    }
-//
-//    private void levelOrderBottomInternal (TreeNode root, int depth, List<List<Integer>> list) {
-//        if (root == null) return;
-//
-//        if (depth >= list.size()) list.add(depth, new LinkedList<>());
-//
-//        List<Integer> inner = list.get(depth);
-//        inner.add(root.val);
-//
-//        levelOrderBottomInternal(root.left, depth + 1, list);
-//        levelOrderBottomInternal(root.right, depth + 1, list);
-//    }
-
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         if (root == null) return new LinkedList<>();
 
-        List<List<Integer>> list = new LinkedList<>();
-
-        Queue<TreeNode> queue = new LinkedBlockingQueue<>();
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        LinkedList<List<Integer>> levels = new LinkedList<>();
         queue.offer(root);
 
-        int cur, count;
-
         while (!queue.isEmpty()) {
-            cur = 0;
-            count = queue.size();
-            List<Integer> inner = new LinkedList<>();
-            list.add(inner);
+            int levelSize = queue.size();
+            List<Integer> level = new ArrayList<>(levelSize);
 
-            while (cur < count) {
-                cur++;
-                TreeNode p = queue.poll();
-                inner.add(p.val);
-                if (p.left != null) queue.offer(p.left);
-                if (p.right != null) queue.offer(p.right);
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.removeFirst();
+                level.add(node.val);
+                if (node.left != null) queue.addLast(node.left);
+                if (node.right != null) queue.addLast(node.right);
             }
+
+            // Add each level to the front so the result is bottom-up directly.
+            levels.addFirst(level);
         }
 
-        Collections.reverse(list);
-
-        return list;
+        return levels;
     }
 
 
