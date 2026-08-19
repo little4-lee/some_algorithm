@@ -1,9 +1,10 @@
 package algo._02linkedlist;
 
-import common.ListNode;
+import static common.ListUtilsKt.printList;
+
 import org.jetbrains.annotations.NotNull;
 
-import static common.ListUtilsKt.printList;
+import common.ListNode;
 
 /**
  * @ClassName: LruLinkedList
