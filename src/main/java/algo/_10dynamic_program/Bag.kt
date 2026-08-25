@@ -7,8 +7,8 @@ package algo._10dynamic_program
  * @param w: the bag weight most *w
  * @return max weight of the bag
  */
-fun knapsack(weights: IntArray, n: Int, w: Int): Int {
-    var array = Array(n) { BooleanArray(w + 1) }
+private fun knapsack(weights: IntArray, n: Int, w: Int): Int {
+    val array = Array(n) { BooleanArray(w + 1) }
     //first row
     array[0][0] = true
     array[0][weights[0]] = true
@@ -38,7 +38,7 @@ fun knapsack(weights: IntArray, n: Int, w: Int): Int {
  * @param w: the bag weight most *w
  * @return max weight of the bag
  */
-fun knapsackIn1DArray(weights: IntArray, n: Int, w: Int): Int {
+private fun knapsackIn1DArray(weights: IntArray, n: Int, w: Int): Int {
     var array = BooleanArray(w + 1)
 
     //first row
