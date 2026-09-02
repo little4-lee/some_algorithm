@@ -17,6 +17,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
+// Hot100 资料目录包含可独立编译的 Kotlin 实现；保留目录结构便于按题目阅读。
+sourceSets {
+    main.kotlin.srcDirs += 'hot100'
+}
+
 test {
     useJUnitPlatform()
 }
