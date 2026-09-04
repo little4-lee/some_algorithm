@@ -1,7 +1,9 @@
 package leetcode.sort
 
+import algo._04stack.StackBasedOnArray
 import common.printArray
 import java.util.LinkedList
+import javax.xml.stream.events.StartElement
 
 /**
  * @author: zhangjianfei03
@@ -83,7 +85,68 @@ private fun test() {
 
     class QuickSort : ISort {
         override fun sort(arr: IntArray?) {
-            TODO()
+            // 检查边界
+            if (arr == null || arr.isEmpty()) {
+                return
+            }
+            doQuickSort(arr, 0, arr.lastIndex)
+        }
+
+        /**
+         * 递归方法：执行快速排序
+         * @param arr 数组
+         * @param start 开始位置
+         * @param end 结束位置
+         */
+        private fun doQuickSort(arr: IntArray, start: Int, end: Int) {
+            if (start > arr.lastIndex || end > arr.lastIndex || start >= end) {
+                return
+            }
+
+            val partition = partition(arr, start, end)
+            if (partition == -1) {
+                // 异常值
+                return
+            }
+            doQuickSort(arr, start, partition - 1)
+            doQuickSort(arr, partition + 1, end)
+        }
+
+        /**
+         * 分区函数
+         * 返回分区的位置position，执行后position左边的元素都小于value，position右边的位置都大于等于value
+         * @param arr 数组
+         * @param start 开始位置
+         * @param end 结束位置
+         */
+        private fun partition(arr: IntArray, start: Int, end: Int): Int {
+            // 边界检查
+            if (start > arr.lastIndex || end > arr.lastIndex || start >= end) {
+                return -1
+            }
+
+            val value = arr[end]
+            var position = start
+
+            //循环：找出所有小于value的值，移动到数组的左边
+            for (i in start .. end) {
+                if (arr[i] < value) {
+                    swap(arr, i, position++)
+                }
+            }
+            //swap position end
+            swap(arr, position, end)
+            return position
+        }
+
+        private fun swap(arr: IntArray, i: Int, j: Int) {
+            if (i > arr.lastIndex || j > arr.lastIndex) {
+                return
+            }
+
+            val temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
         }
     }
 
@@ -171,9 +234,9 @@ private fun test() {
 //    sorts.add(BubbleSort())
 //    sorts.add(InsertionSort())
 //    sorts.add(SelectionSort())
-//    sorts.add(QuickSort())
+    sorts.add(QuickSort())
 //    sorts.add(HeapSort())
-    sorts.add(MergeSort())
+//    sorts.add(MergeSort())
     for (sort in sorts) {
         println(sort.javaClass.getSimpleName() + " ==> ")
         for (arr in arrList) {

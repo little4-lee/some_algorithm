@@ -1,11 +1,9 @@
 package leetcode.sort
 
 import common.printArray
-import org.w3c.dom.DOMError
+import java.awt.geom.Point2D
 import java.util.LinkedList
-import javax.sound.midi.MidiEvent
-import kotlin.math.PI
-import kotlin.math.min
+import javax.imageio.metadata.IIOMetadataFormatImpl
 
 /**
  * @author: zhangjianfei03
@@ -85,7 +83,66 @@ private fun test() {
 
     class QuickSort : ISort {
         override fun sort(arr: IntArray?) {
-            TODO()
+            // 检查边界
+            if (arr == null || arr.isEmpty()) {
+                return
+            }
+            doQuickSort(arr, 0, arr.lastIndex)
+        }
+
+        /**
+         * 快速排序算法，递归执行
+         */
+        private fun doQuickSort(arr: IntArray, start: Int, end: Int) {
+            // 检查边界
+            if (start > arr.lastIndex || end > arr.lastIndex || start >= end) {
+                return
+            }
+            // 找到分区点
+            val partition = partition(arr, start, end)
+            if (partition == -1) {
+                // 异常数据
+                return
+            }
+            doQuickSort(arr, start, partition - 1)
+            doQuickSort(arr, partition + 1, end)
+        }
+
+        /**
+         * 分区函数
+         * - 返回分区点
+         * - 分区完成后，分区点左边小于分支值，分区点右边大于等于分区值
+         */
+        private fun partition(arr: IntArray, start: Int, end: Int): Int {
+            // 边界检查
+            if (start > arr.lastIndex || end > arr.lastIndex || start >= end) {
+                return -1
+            }
+
+            // 取最后一个作为分区值
+            val value = arr[end]
+            // 分区的游标
+            var position = start
+            // 循环：每次循环确定当前值与分区值的关系
+            for (i in start until end) {
+                if (arr[i] < value) {
+                    // swap
+                    swap(arr, i, position++)
+                }
+            }
+            //swap position end
+            swap(arr, position,end)
+            return position
+        }
+
+        private fun swap(arr: IntArray, i: Int, j: Int) {
+            if (i > arr.lastIndex || j > arr.lastIndex || i == j) {
+                return
+            }
+
+            val temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
         }
     }
 
@@ -169,9 +226,9 @@ private fun test() {
 //    sorts.add(BubbleSort())
 //    sorts.add(InsertionSort())
 //    sorts.add(SelectionSort())
-//    sorts.add(QuickSort())
+    sorts.add(QuickSort())
 //    sorts.add(HeapSort())
-    sorts.add(MergeSort())
+//    sorts.add(MergeSort())
     for (sort in sorts) {
         println(sort.javaClass.getSimpleName() + " ==> ")
         for (arr in arrList) {
