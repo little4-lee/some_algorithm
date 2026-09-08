@@ -1,8 +1,8 @@
 package leetcode.sort
 
 import common.printArray
+import common.swap
 import java.util.LinkedList
-import javax.xml.stream.events.StartElement
 
 /**
  * @author: zhangjianfei03
@@ -86,7 +86,39 @@ private fun test() {
 
     class HeapSort : ISort {
         override fun sort(arr: IntArray?) {
-            TODO()
+            if (arr == null || arr.isEmpty()) {
+                return
+            }
+            // 建堆
+            // 从第一个非业务节点向下堆化
+            for (i in arr.size / 2 - 1 downTo 0) {
+                heapify(arr, arr.lastIndex, i)
+            }
+            // 排序
+            for (i in arr.lastIndex downTo 1) {
+                // 取出堆顶元素
+                swap(arr, 0, i)
+                // 对堆顶元素进行堆化
+                heapify(arr, i - 1, 0)
+            }
+        }
+
+        /**
+         * 堆化方法
+         */
+        private fun heapify(arr: IntArray, lastIndex: Int, heapingPosition: Int) {
+            var pos = heapingPosition
+            while (true) {
+                var maxPos = pos
+                val left = pos * 2 + 1
+                val right = pos * 2 + 2
+                if (left <= lastIndex && arr[left] > arr[maxPos]) maxPos = left
+                if (right <= lastIndex && arr[right] > arr[maxPos]) maxPos = right
+
+                if (maxPos == pos) break
+                swap(arr, maxPos, pos)
+                pos = maxPos
+            }
         }
     }
 
@@ -160,8 +192,8 @@ private fun test() {
 //    sorts.add(InsertionSort())
 //    sorts.add(SelectionSort())
 //    sorts.add(QuickSort())
-//    sorts.add(HeapSort())
-    sorts.add(MergeSort())
+    sorts.add(HeapSort())
+//    sorts.add(MergeSort())
     for (sort in sorts) {
         println(sort.javaClass.getSimpleName() + " ==> ")
         for (arr in arrList) {

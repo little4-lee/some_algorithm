@@ -1,11 +1,11 @@
 package leetcode.sort;
 
+import static common.ArrayUtilsKt.printArray;
+import static common.ArrayUtilsKt.swap;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
-import static common.ArrayUtilsKt.printArray;
-import static common.ArrayUtilsKt.swap;
 
 public class SortCollection7 {
 
