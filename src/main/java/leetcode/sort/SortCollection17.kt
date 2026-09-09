@@ -1,7 +1,9 @@
 package leetcode.sort
 
 import common.printArray
+import common.swap
 import java.util.LinkedList
+import javax.swing.text.Position
 
 /**
  * @author: zhangjianfei03
@@ -86,7 +88,32 @@ private fun test() {
 
     class HeapSort : ISort {
         override fun sort(arr: IntArray?) {
-            TODO()
+            if (arr == null || arr.isEmpty()) {
+                return
+            }
+            // 建堆
+            for (i in arr.size / 2 - 1 downTo 0) {
+                heapify(arr, arr.lastIndex, i)
+            }
+            // 排序
+            for (i in arr.lastIndex downTo 1) {
+                swap(arr, i, 0)
+                heapify(arr, i - 1, 0)
+            }
+        }
+
+        private fun heapify(arr: IntArray, lastIndex: Int, heapifyPos: Int) {
+            var pos = heapifyPos
+            while (true) {
+                var maxPos = pos
+                val left = pos * 2 + 1
+                val right = pos * 2 + 2
+                if (left <= lastIndex && arr[left] > arr[maxPos]) maxPos = left
+                if (right <= lastIndex && arr[right] > arr[maxPos]) maxPos = right
+                if (maxPos == pos) break
+                swap(arr, maxPos, pos)
+                pos = maxPos
+            }
         }
     }
 
@@ -155,7 +182,7 @@ private fun test() {
 //    sorts.add(InsertionSort())
 //    sorts.add(SelectionSort())
 //    sorts.add(QuickSort())
-//    sorts.add(HeapSort())
+    sorts.add(HeapSort())
     sorts.add(MergeSort())
     for (sort in sorts) {
         println(sort.javaClass.getSimpleName() + " ==> ")
